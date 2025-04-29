@@ -114,6 +114,7 @@
       border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s ease;
+      margin: 0 5px;
     }
     
     .pdf-controls button:hover {
@@ -191,6 +192,8 @@
         <div class="pdf-viewer" id="pdf-viewer"></div>
         <div class="pdf-controls">
           <button id="prev-page">Previous Page</button>
+          <button id="zoom-in">Zoom In</button>
+          <button id="zoom-out">Zoom Out</button>
           <button id="next-page">Next Page</button>
         </div>
         <div class="page-info">
@@ -219,12 +222,15 @@
       const container = document.getElementById('pdf-viewer');
       const prevButton = document.getElementById('prev-page');
       const nextButton = document.getElementById('next-page');
+      const zoomInButton = document.getElementById('zoom-in');
+      const zoomOutButton = document.getElementById('zoom-out');
       const pageNumSpan = document.getElementById('page-num');
       const pageCountSpan = document.getElementById('page-count');
       
       let pdfDoc = null;
       let pageNum = 1;
       let pageCount = 0;
+      let currentScale = 1.5;
       
       // Initialize PDF.js
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
@@ -243,7 +249,7 @@
       
       function renderPage(num) {
         pdfDoc.getPage(num).then(function(page) {
-          const viewport = page.getViewport({ scale: 1.5 });
+          const viewport = page.getViewport({ scale: currentScale });
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
           
@@ -272,6 +278,17 @@
       nextButton.addEventListener('click', function() {
         if (pageNum >= pageCount) return;
         pageNum++;
+        renderPage(pageNum);
+      });
+
+      zoomInButton.addEventListener('click', function() {
+        currentScale += 0.25;
+        renderPage(pageNum);
+      });
+
+      zoomOutButton.addEventListener('click', function() {
+        if (currentScale <= 0.5) return;
+        currentScale -= 0.25;
         renderPage(pageNum);
       });
     });
