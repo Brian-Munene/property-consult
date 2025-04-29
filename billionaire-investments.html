@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Billionaire Investments - Property Consult Limited</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/listings.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <style>
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    
+    .back-button:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-1px);
+    }
+    
+    .site-header {
+      position: relative;
+    }
+    
+    .investment-section {
+      padding: 4rem 0;
+      background-color: #f8f9fa;
+    }
+    
+    .investment-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .investment-summary {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .investment-summary p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    
+    .investment-summary ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    .investment-summary li {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .investment-summary li::before {
+      content: "•";
+      color: #34abeb;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    
+    .pdf-viewer-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 2rem;
+    }
+    
+    .pdf-viewer {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .pdf-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .pdf-controls button {
+      padding: 0.5rem 1rem;
+      background-color: #34abeb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .pdf-controls button:hover {
+      background-color: #2a8bc7;
+    }
+    
+    .page-info {
+      text-align: center;
+      margin-top: 1rem;
+      color: #666;
+    }
+    
+    .error-message {
+      color: #e74c3c;
+      text-align: center;
+      padding: 1rem;
+      background: #fde8e7;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .investment-summary {
+        padding: 1.5rem;
+      }
+      
+      .investment-summary p,
+      .investment-summary li {
+        font-size: 1rem;
+      }
+      
+      .pdf-viewer {
+        height: 400px;
+      }
+      
+      .back-button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="back-button">Home</a>
+      <h1 class="logo" style="color: #333;">Property Consult Limited</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html#listings">Listings</a></li>
+          <li><a href="index.html#cities">Diaspora</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- INVESTMENT SECTION -->
+  <section class="investment-section">
+    <div class="investment-container">
+      <div class="investment-summary">
+        <p>Nairobi is a very big city it needs many schools and there is a shortage. This investment opportunity has more than 10,000 families in a controlled development area around it, let alone other neighbourhoods.</p>
+        
+        <ul>
+          <li>$12 to $15 million or KES 1.5B to KES 2B is required for this development to purchase and develop.</li>
+          <li>It will take around 2 years to construct primary school, secondary school and a hospital.</li>
+          <li>The school will have 4 streams per class from primary to secondary</li>
+          <li>Based on current market conditions, we anticipate having about 1500 pupils for primary school, each paying 1500 dollars yearly and 1500 students for junior and senior high school, each paying around $2500 yearly.</li>
+          <li>The anticipated revenues is around $6 million collected per year</li>
+          <li>If we remove expenses approximately 1.5 million- profit is</li>
+          <li>$4.5 million per year, at this rate, the investment pays it's self in about 4 to 5 years. That's without counting the hospital.</li>
+        </ul>
+      </div>
+      
+      <div class="pdf-viewer-container">
+        <div class="pdf-viewer" id="pdf-viewer"></div>
+        <div class="pdf-controls">
+          <button id="prev-page">Previous Page</button>
+          <button id="next-page">Next Page</button>
+        </div>
+        <div class="page-info">
+          Page <span id="page-num"></span> of <span id="page-count"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Property Consult Limited. All rights reserved.</p>
+  </footer>
+
+  <!-- Zoom Modal -->
+  <div class="zoom-modal" id="imageModal">
+    <img id="modalImage" src="" alt="Zoomed image">
+  </div>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/project.js"></script>
+</body>
+</html>

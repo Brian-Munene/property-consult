@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Addis Ababa - Property Consult Limited</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/listings.css" />
+  <style>
+    .city-header {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+    }
+    
+    .city-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(70%);
+    }
+    
+    .city-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+    }
+    
+    .city-title h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    
+    .city-content {
+      padding: 4rem 0;
+      background-color: #f8f9fa;
+    }
+    
+    .city-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .city-description {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .city-description p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .gallery-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .city-title h1 {
+        font-size: 2rem;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .city-title h1 {
+        font-size: 1.5rem;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .back-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .site-header {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="back-button">Home</a>
+      <h1 class="logo" style="color: #333;">Property Consult Limited</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html#listings">Listings</a></li>
+          <li><a href="index.html#cities">Diaspora</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CITY HEADER -->
+  <section class="city-header">
+    <img src="assets/images/Addis-Ababa/city-landscape.jpeg" alt="Addis Ababa City Landscape" />
+    <div class="city-title">
+      <h1>Addis Ababa</h1>
+    </div>
+  </section>
+
+  <!-- CITY CONTENT -->
+  <section class="city-content">
+    <div class="city-container">
+      <div class="city-description">
+        <p>Addis Ababa, the capital of Ethiopia, is a vibrant and rapidly growing city that serves as the political and economic hub of the country. Known as the "New Flower," Addis Ababa is a city of contrasts, where modern skyscrapers stand alongside traditional markets and historical landmarks.</p>
+        
+        <p>The city's real estate market is booming, with new developments in areas like Bole, Kazanchis, and CMC. Addis Ababa's strategic location as the diplomatic capital of Africa, combined with its growing economy, makes it an attractive destination for property investment.</p>
+        
+        <p>Addis Ababa offers a unique blend of cultural heritage and modern development, with numerous museums, historical sites, and modern amenities. The city's elevation of 2,355 meters above sea level gives it a pleasant climate year-round, making it an ideal place to live and work.</p>
+      </div>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="assets/images/Addis-Ababa/city-landscape.jpeg" alt="City Landscape" />
+          <div class="caption">City Skyline</div>
+        </div>
+        <div class="gallery-item">
+            <img src="assets/images/Addis-Ababa/monument.jpeg" alt="Monument" />
+            <div class="caption">Monument</div>
+          </div>
+        <div class="gallery-item">
+          <img src="assets/images/Addis-Ababa/street.jpeg" alt="Street" />
+          <div class="caption">Street</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Addis-Ababa/street2.jpeg" alt="main Street" />
+          <div class="caption">Main Street</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Addis-Ababa/train.jpeg" alt="Trian" />
+          <div class="caption">Train</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Addis-Ababa/night-lights.jpeg" alt="Night Lights" />
+          <div class="caption">Night Lights</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Property Consult Limited. All rights reserved.</p>
+  </footer>
+
+  <!-- Zoom Modal -->
+  <div class="zoom-modal" id="imageModal">
+    <img id="modalImage" src="" alt="Zoomed image">
+  </div>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/project.js"></script>
+</body>
+</html>

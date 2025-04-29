@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kigali - City of a Thousand Hills</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/listings.css" />
+  <style>
+    .city-header {
+      position: relative;
+      height: 40vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/Kigali/city-overview.jpeg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    
+    .city-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .city-content {
+      padding: 2rem;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    .city-description {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      text-align: justify;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-category {
+      margin-bottom: 2rem;
+    }
+    
+    .gallery-category h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      border-left: 4px solid #34abeb;
+    }
+    
+    .gallery-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 1rem;
+      scrollbar-width: thin;
+      scrollbar-color: #34abeb #f0f0f0;
+    }
+    
+    .gallery-row::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    .gallery-row::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      border-radius: 4px;
+    }
+    
+    .gallery-row::-webkit-scrollbar-thumb {
+      background: #34abeb;
+      border-radius: 4px;
+    }
+    
+    .gallery-item {
+      flex: 0 0 300px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .back-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    @media (max-width: 768px) {
+      .city-title {
+        font-size: 2rem;
+      }
+      
+      .gallery-item {
+        flex: 0 0 250px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gallery-item {
+        flex: 0 0 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="back-button">Home</a>
+      <h1 class="logo" style="color: #333;">Property Consult Limited</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html#listings">Listings</a></li>
+          <li><a href="index.html#cities">Diaspora</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CITY HEADER -->
+  <section class="city-header">
+    <div>
+      <h1 class="city-title">Kigali</h1>
+      <p>The City of a Thousand Hills</p>
+    </div>
+  </section>
+
+  <!-- CITY CONTENT -->
+  <section class="city-content">
+    <div class="city-description">
+      <p>Kigali, the capital and largest city of Rwanda, is known for its cleanliness, safety, and stunning hilly landscape. The city has undergone remarkable transformation since the 1994 genocide, emerging as one of Africa's most modern and well-organized cities. Kigali is a hub for business, culture, and tourism, offering a unique blend of traditional Rwandan culture and modern development.</p>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-category">
+        <h3>City Views</h3>
+        <div class="gallery-row">
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/city-overview.jpeg" alt="City Overview" />
+            <div class="caption">City Overview</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/city-night.jpeg" alt="City at Night" />
+            <div class="caption">City at Night</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/city.jpeg" alt="City Center" />
+            <div class="caption">City Center</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-category">
+        <h3>Landmarks</h3>
+        <div class="gallery-row">
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/dome.jpeg" alt="Kigali Convention Center" />
+            <div class="caption">Kigali Convention Center</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/dome2.jpeg" alt="Convention Center View" />
+            <div class="caption">Convention Center View</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/dome-night.jpeg" alt="Convention Center at Night" />
+            <div class="caption">Convention Center at Night</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-category">
+        <h3>City Life</h3>
+        <div class="gallery-row">
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/main-street.jpeg" alt="Main Street" />
+            <div class="caption">Main Street</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/junction.jpeg" alt="City Junction" />
+            <div class="caption">City Junction</div>
+          </div>
+          <div class="gallery-item">
+            <img src="assets/images/Kigali/mountain-street.jpeg" alt="Mountain Street" />
+            <div class="caption">Mountain Street</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Property Consult Limited. All rights reserved.</p>
+  </footer>
+
+  <!-- Zoom Modal -->
+  <div class="zoom-modal" id="imageModal">
+    <img id="modalImage" src="" alt="Zoomed image">
+  </div>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/project.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kampala - Property Consult Limited</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/listings.css" />
+  <style>
+    .city-header {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+    }
+    
+    .city-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(70%);
+    }
+    
+    .city-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+    }
+    
+    .city-title h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    
+    .city-content {
+      padding: 4rem 0;
+      background-color: #f8f9fa;
+    }
+    
+    .city-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .city-description {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .city-description p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .gallery-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .city-title h1 {
+        font-size: 2rem;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .city-title h1 {
+        font-size: 1.5rem;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .back-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .site-header {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="back-button">Home</a>
+      <h1 class="logo" style="color: #333;">Property Consult Limited</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html#listings">Listings</a></li>
+          <li><a href="index.html#cities">Diaspora</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CITY HEADER -->
+  <section class="city-header">
+    <img src="assets/images/Kampala/city-view.jpeg" alt="Kampala City View" />
+    <div class="city-title">
+      <h1>Kampala</h1>
+    </div>
+  </section>
+
+  <!-- CITY CONTENT -->
+  <section class="city-content">
+    <div class="city-container">
+      <div class="city-description">
+        <p>Kampala, the capital city of Uganda, is a vibrant and rapidly growing metropolis that serves as the country's economic and cultural hub. Known for its rolling hills and beautiful scenery, Kampala offers a unique blend of urban development and natural beauty.</p>
+        
+        <p>The city's real estate market is experiencing significant growth, particularly in areas like Kololo, Nakasero, and Bugolobi. Kampala's strategic location and growing economy make it an attractive destination for property investment.</p>
+        
+        <p>Kampala offers a rich cultural experience with numerous historical sites, markets, and modern amenities. The city's warm climate and friendly atmosphere make it an ideal place to live and work.</p>
+      </div>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="assets/images/Kampala/city-view.jpeg" alt="City View" />
+          <div class="caption">City Skyline</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Kampala/city-view2.jpeg" alt="City Overview" />
+          <div class="caption">City Overview</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Kampala/city-night.jpeg" alt="City Night" />
+          <div class="caption">City Street</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Kampala/city.jpeg" alt="City" />
+          <div class="caption">City</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Kampala/night-light.jpeg" alt="Night Light" />
+          <div class="caption">Night Light</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Kampala/night-light2.jpeg" alt="City Night" />
+          <div class="caption">City at Night</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Property Consult Limited. All rights reserved.</p>
+  </footer>
+
+  <!-- Zoom Modal -->
+  <div class="zoom-modal" id="imageModal">
+    <img id="modalImage" src="" alt="Zoomed image">
+  </div>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/project.js"></script>
+</body>
+</html>

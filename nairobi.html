@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nairobi - Property Consult Limited</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <link rel="stylesheet" href="assets/css/listings.css" />
+  <style>
+    .city-header {
+      position: relative;
+      height: 60vh;
+      overflow: hidden;
+    }
+    
+    .city-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(70%);
+    }
+    
+    .city-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+    }
+    
+    .city-title h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+    
+    .city-content {
+      padding: 4rem 0;
+      background-color: #f8f9fa;
+    }
+    
+    .city-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .city-description {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+    
+    .city-description p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .gallery-item .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .city-title h1 {
+        font-size: 2rem;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .city-title h1 {
+        font-size: 1.5rem;
+      }
+      
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .back-button:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .site-header {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="back-button">Home</a>
+      <h1 class="logo" style="color: #333;">Property Consult Limited</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html#listings">Listings</a></li>
+          <li><a href="index.html#cities">Diaspora</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CITY HEADER -->
+  <section class="city-header">
+    <img src="assets/images/Nairobi/city-view.jpeg" alt="Nairobi City View" />
+    <div class="city-title">
+      <h1>Nairobi</h1>
+    </div>
+  </section>
+
+  <!-- CITY CONTENT -->
+  <section class="city-content">
+    <div class="city-container">
+      <div class="city-description">
+        <p>Nairobi, Kenya's capital and largest city, is a vibrant metropolis that serves as the economic and cultural hub of East Africa. Known as the "Green City in the Sun," Nairobi offers a unique blend of urban sophistication and natural beauty.</p>
+        
+        <p>The city is home to numerous international organizations, including the United Nations Environment Programme (UNEP) and the United Nations Human Settlements Programme (UN-Habitat). Nairobi's real estate market is booming, with modern developments in areas like Westlands, Kilimani, and Karen.</p>
+        
+        <p>Nairobi National Park, located just outside the city center, is the only national park in the world within a capital city, offering residents and visitors the chance to see wildlife against a backdrop of city skyscrapers.</p>
+      </div>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="assets/images/Nairobi/cbd.jpeg" alt="Nairobi CBD" />
+          <div class="caption">Central Business District</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Nairobi/westlands.jpeg" alt="Westlands" />
+          <div class="caption">Westlands Business District</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Nairobi/city-night.jpeg" alt="Nairobi at Night" />
+          <div class="caption">City Skyline at Night</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Nairobi/expressway.jpeg" alt="Nairobi Expressway" />
+          <div class="caption">Nairobi Expressway</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Nairobi/fireworks.jpeg" alt="Nairobi Fireworks" />
+          <div class="caption">City Celebrations</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/images/Nairobi/outskirts.jpeg" alt="Nairobi Outskirts" />
+          <div class="caption">City Outskirts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Property Consult Limited. All rights reserved.</p>
+  </footer>
+
+  <!-- Zoom Modal -->
+  <div class="zoom-modal" id="imageModal">
+    <img id="modalImage" src="" alt="Zoomed image">
+  </div>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/project.js"></script>
+</body>
+</html>

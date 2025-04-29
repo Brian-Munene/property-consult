@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kiambu Road Villas - Property Consult Limited</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/project.css" />
+  <link rel="stylesheet" href="assets/css/navbar.css" />
+  <style>
+    .site-header {
+      position: relative;
+      background: white;
+      padding: 1rem 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+      margin: 0;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #333;
+      text-decoration: none;
+      border-radius: 5px;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .back-button:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Project Hero Section */
+    .project-hero {
+      position: relative;
+      height: 50vh;
+      width: 100%;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/Kiambu-Road-Villas/home-front.jpeg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-text {
+      max-width: 100%;
+      width: 100%;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Project Details Section */
+    .project-details {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      padding: 3rem 2rem;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .project-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .project-overview {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2rem;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+
+    .features {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+    }
+
+    .features h4 {
+      color: #34abeb;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .features ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .features li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      flex: 0 0 calc(25% - 2rem);
+      min-width: 200px;
+      text-align: left;
+    }
+
+    .features li:before {
+      content: "✓";
+      color: #34abeb;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Gallery Section */
+    .project-gallery-grid {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-category {
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    .gallery-category h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      border-left: 4px solid #34abeb;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .project-info {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="back-button">Home</a>
+      <h1 class="logo">Property Consult Limited</h1>
+    </div>
+  </header>
+
+  <!-- PROJECT HERO -->
+  <section class="project-hero">
+    <img src="assets/images/Kiambu-Road-Villas/home-front.jpeg" alt="Kiambu Road Villas Front View" />
+    <div class="hero-text">
+      <h2>Kiambu Road Villas</h2>
+      <p>Luxury living in a prime location</p>
+    </div>
+  </section>
+
+  <!-- PROJECT DETAILS -->
+  <section class="project-details container">
+    <div class="project-info">
+      <h3>Project Overview</h3>
+      <p>Experience luxury living in these exquisite villas located along Kiambu Road. Each villa features modern amenities, spacious living areas, and beautiful outdoor spaces.</p>
+      
+      <div class="features">
+        <h4>Key Features</h4>
+        <ul>
+          <li>Spacious living areas</li>
+          <li>Modern kitchen designs</li>
+          <li>Private terraces</li>
+          <li>Luxurious bathrooms</li>
+          <li>Beautiful compound</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PROJECT GALLERY -->
+    <div class="project-gallery-grid">
+      <h3>Photo Gallery</h3>
+      <div class="gallery">
+        <!-- Exterior -->
+        <div class="gallery-category">
+          <h3>Exterior & Outdoor</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/home-front.jpeg" alt="Home Front">
+              <p>Home Front</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/home-front-diagonal.jpeg" alt="Home Front Diagonal">
+              <p>Home Front Diagonal</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/home-back.jpeg" alt="Home Back">
+              <p>Home Back</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/house-side.jpeg" alt="House Side">
+              <p>House Side</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/side-top.jpeg" alt="Side Top">
+              <p>Side Top</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/kitchen-path.jpeg" alt="Kitchen Path">
+              <p>Kitchen Path</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/terrace.jpeg" alt="Terrace">
+              <p>Terrace</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/terrace2.jpeg" alt="Terrace 2">
+              <p>Terrace 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/terrace3.jpeg" alt="Terrace 3">
+              <p>Terrace 3</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/compound.jpeg" alt="Compound">
+              <p>Compound</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Living Areas -->
+        <div class="gallery-category">
+          <h3>Living Areas</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/living-area.jpeg" alt="Living Area">
+              <p>Living Area</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/living-area2.jpeg" alt="Living Area 2">
+              <p>Living Area 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/living-space2.jpeg" alt="Living Space 2">
+              <p>Living Space 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/living-space3.jpeg" alt="Living Space 3">
+              <p>Living Space 3</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/living-space4.jpeg" alt="Living Space 4">
+              <p>Living Space 4</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/living-space6.jpeg" alt="Living Space 6">
+              <p>Living Space 6</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/corridor.jpeg" alt="Corridor">
+              <p>Corridor</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/corridor2.jpeg" alt="Corridor 2">
+              <p>Corridor 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/stairs.jpeg" alt="Stairs">
+              <p>Stairs</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/stairs2.jpeg" alt="Stairs 2">
+              <p>Stairs 2</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kitchen -->
+        <div class="gallery-category">
+          <h3>Kitchen & Dining</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/kitchen.jpeg" alt="Kitchen">
+              <p>Kitchen</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/kitchen2.jpeg" alt="Kitchen 2">
+              <p>Kitchen 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/kitchen-sink.jpeg" alt="Kitchen Sink">
+              <p>Kitchen Sink</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/kitchen-path.jpeg" alt="Kitchen Path">
+              <p>Kitchen Path</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bedrooms -->
+        <div class="gallery-category">
+          <h3>Bedrooms & Bathrooms</h3>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/room1.jpeg" alt="Room 1">
+              <p>Room 1</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/room2.jpeg" alt="Room 2">
+              <p>Room 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/room2-view2.jpeg" alt="Room 2 View 2">
+              <p>Room 2 View 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/room3.jpeg" alt="Room 3">
+              <p>Room 3</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/room3-view2.jpeg" alt="Room 3 View 2">
+              <p>Room 3 View 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/bathtub.jpeg" alt="Bathtub">
+              <p>Bathtub</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/shower.jpeg" alt="Shower">
+              <p>Shower</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/washroom.jpeg" alt="Washroom">
+              <p>Washroom</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/closet.jpeg" alt="Closet">
+              <p>Closet</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/closet2.jpeg" alt="Closet 2">
+              <p>Closet 2</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/closet3.jpeg" alt="Closet 3">
+              <p>Closet 3</p>
+            </div>
+            <div class="gallery-item">
+              <img src="assets/images/Kiambu-Road-Villas/closet4.jpeg" alt="Closet 4">
+              <p>Closet 4</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 Property Consult Limited. All rights reserved.</p>
+  </footer>
+
+  <!-- Zoom Modal -->
+  <div class="zoom-modal" id="imageModal">
+    <img id="modalImage" src="" alt="Zoomed image">
+  </div>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/project.js"></script>
+</body>
+</html>
