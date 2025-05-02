@@ -213,6 +213,43 @@
     <img id="modalImage" src="" alt="Zoomed image">
   </div>
 
+  <!-- Floating Action Button -->
+  <button class="fab">Book Appointment</button>
+
+  <!-- Booking Form Modal -->
+  <div class="booking-modal">
+    <div class="booking-form">
+      <button class="close-btn">&times;</button>
+      <h2>Book Property Viewing</h2>
+      <form id="bookingForm">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" required pattern="[0-9+\s-]{10,}" placeholder="+254 XXX XXX XXX">
+        </div>
+        <div class="form-group">
+          <label for="property">Property of Interest</label>
+          <select id="property" required>
+            <option value="">Select a property</option>
+            <option value="Kiambu Road Villas">Kiambu Road Villas</option>
+            <option value="Easternville">Easternville</option>
+            <option value="Luxury Apartments">Luxury Apartments</option>
+            <option value="Runda 92M">Runda 92M</option>
+            <option value="Runda House 62M">Runda House 62M</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Preferred Viewing Date</label>
+          <input type="date" id="date" required>
+        </div>
+        <button type="submit">Book via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const carousel = document.querySelector('.carousel');
@@ -243,8 +280,47 @@
       // Auto-rotate every 5 seconds
       setInterval(nextSlide, 5000);
     });
+
+    // Booking form functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const fab = document.querySelector('.fab');
+      const modal = document.querySelector('.booking-modal');
+      const closeBtn = document.querySelector('.close-btn');
+      const bookingForm = document.getElementById('bookingForm');
+      const whatsappNumber = '+254712345678'; // Replace with your actual WhatsApp number
+
+      fab.addEventListener('click', () => {
+        modal.classList.add('active');
+      });
+
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const property = document.getElementById('property').value;
+        const date = document.getElementById('date').value;
+
+        const message = `Hello! I would like to book a viewing:\n\nName: ${name}\nPhone: ${phone}\nProperty: ${property}\nPreferred Date: ${date}`;
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappUrl, '_blank');
+        modal.classList.remove('active');
+        bookingForm.reset();
+      });
+    });
   </script>
   <script src="assets/js/project.js"></script>
   <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/booking.js"></script>
 </body>
 </html>
