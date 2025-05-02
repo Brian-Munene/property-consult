@@ -1,5 +1,5 @@
 // WhatsApp configuration
-const WHATSAPP_NUMBER = '+254 726 600 953';
+const WHATSAPP_NUMBER = '+254726600953';
 
 function renderPayPalButton() {
     paypal.Buttons({
