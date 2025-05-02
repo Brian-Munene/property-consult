@@ -57,9 +57,10 @@ function initializeBookingForm() {
 
         const message = `Hello! I would like to book a viewing:\n\nName: ${formData.name}${formData.phone ? '\nPhone: ' + formData.phone : ''}\nProperty: ${formData.property}\nPreferred Date: ${formData.date}`;
         const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-        
-        window.open(whatsappUrl, '_blank');
-        modal.classList.remove('active');
+        console.log(formData.name)
+        console.log(message)
+        // window.open(whatsappUrl, '_blank');
+        // modal.classList.remove('active');
         bookingForm.reset();
 
         // Display PayPal button container after sending message
