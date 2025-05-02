@@ -280,44 +280,6 @@
       // Auto-rotate every 5 seconds
       setInterval(nextSlide, 5000);
     });
-
-    // Booking form functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const fab = document.querySelector('.fab');
-      const modal = document.querySelector('.booking-modal');
-      const closeBtn = document.querySelector('.close-btn');
-      const bookingForm = document.getElementById('bookingForm');
-      const whatsappNumber = '+254712345678'; // Replace with your actual WhatsApp number
-
-      fab.addEventListener('click', () => {
-        modal.classList.add('active');
-      });
-
-      closeBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.classList.remove('active');
-        }
-      });
-
-      bookingForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const property = document.getElementById('property').value;
-        const date = document.getElementById('date').value;
-
-        const message = `Hello! I would like to book a viewing:\n\nName: ${name}\nPhone: ${phone}\nProperty: ${property}\nPreferred Date: ${date}`;
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-        
-        window.open(whatsappUrl, '_blank');
-        modal.classList.remove('active');
-        bookingForm.reset();
-      });
-    });
   </script>
   <script src="assets/js/project.js"></script>
   <script src="assets/js/navbar.js"></script>
