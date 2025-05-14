@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   
   <!-- Primary Meta Tags -->
-  <title>Luxurious Runda Estate Home - KES 92M | Property Consult Limited</title>
-  <meta name="title" content="Luxurious Runda Estate Home - KES 92M | Property Consult Limited">
-  <meta name="description" content="Exceptional 92M mansion in Runda Estate, Nairobi. Featuring premium finishes, spacious living areas, and modern amenities in one of Nairobi's most prestigious neighborhoods.">
-  <meta name="keywords" content="Runda estate, luxury home Nairobi, premium property Kenya, Runda mansion, high-end real estate">
+  <title>Magnificent Runda Kiambu Road 92M Mansion | Property Consult Limited</title>
+  <meta name="title" content="Magnificent Runda Kiambu Road 92M Mansion | Property Consult Limited">
+  <meta name="description" content="Luxurious 5 bedroom mansion plus DSQ in Runda Kiambu Road. Features spacious green compound, modern amenities, and prime location near Two Rivers Mall and diplomatic areas.">
+  <meta name="keywords" content="Runda estate, Kiambu Road property, luxury mansion Nairobi, 5 bedroom house, premium real estate Kenya">
   <meta name="author" content="brianmunene69@gmail.com">
   <meta name="robots" content="index, follow">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://propertyconsult.com/runda-92m">
-  <meta property="og:title" content="Luxurious Runda Estate Home - KES 92M | Property Consult Limited">
-  <meta property="og:description" content="Exceptional 92M mansion in Runda Estate, Nairobi. Featuring premium finishes, spacious living areas, and modern amenities in one of Nairobi's most prestigious neighborhoods.">
+  <meta property="og:title" content="Magnificent Runda Kiambu Road 92M Mansion | Property Consult Limited">
+  <meta property="og:description" content="Luxurious 5 bedroom mansion plus DSQ in Runda Kiambu Road. Features spacious green compound, modern amenities, and prime location near Two Rivers Mall and diplomatic areas.">
   <meta property="og:image" content="assets/images/Runda-92M/home-front.jpeg">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Luxurious Runda Estate Home - KES 92M | Property Consult Limited">
-  <meta name="twitter:description" content="Exceptional 92M mansion in Runda Estate, Nairobi. Featuring premium finishes, spacious living areas, and modern amenities in one of Nairobi's most prestigious neighborhoods.">
+  <meta name="twitter:title" content="Magnificent Runda Kiambu Road 92M Mansion | Property Consult Limited">
+  <meta name="twitter:description" content="Luxurious 5 bedroom mansion plus DSQ in Runda Kiambu Road. Features spacious green compound, modern amenities, and prime location near Two Rivers Mall and diplomatic areas.">
   <meta name="twitter:image" content="assets/images/Runda-92M/home-front.jpeg">
 
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -371,18 +371,44 @@
   <!-- PROJECT DETAILS -->
   <section class="project-details container">
     <div class="project-info">
-      <h3>Project Overview</h3>
-      <p>Runda House 62M offers an exceptional living experience in one of Nairobi's most prestigious neighborhoods. This property combines modern design with timeless elegance.</p>
+      <div class="project-overview">
+        <h3>Project Overview</h3>
+        <p>Purchase these Magnificent 5 bedroom Mansions plus DSQ with very spacious green compound in Runda kiambu road. Price is 87M cash and 92M mortgage with deposit from 10%. The Mansions are newly built in a gated estate of similar units plus a huge clubhouse with close proximity to Two Rivers Mall, Village Market, Windsor Golf and Country Club, Muthaiga Golf Club, Ridgeways Mall, the Wadi Degla Club, UN gigiri, Northern Bypass, Red Hill Bypass, western Bypass and newly dualled Parklands Runda highway.</p>
+      </div>
       
       <div class="features">
-        <h4>Key Features</h4>
+        <h4>Property Features</h4>
         <ul>
-          <li>Prestigious location</li>
-          <li>Spacious interiors</li>
-          <li>Modern kitchen</li>
-          <li>Beautiful bedrooms</li>
-          <li>Lush gardens</li>
-          <li>Elegant gazebo</li>
+          <li>662 SQM</li>
+          <li>5 bedroom ensuite</li>
+          <li>Spacious kitchen</li>
+          <li>Kitchen pantry</li>
+          <li>Kitchen island</li>
+          <li>Fitted kitchen</li>
+          <li>Laundry room</li>
+          <li>Store</li>
+          <li>DSQ</li>
+          <li>Family room</li>
+          <li>Walking closet for master bedroom</li>
+          <li>Spacious balconies</li>
+          <li>Spacious green side yard</li>
+          <li>Spacious green backyard</li>
+          <li>Perimeter wall with razor & electric fence</li>
+          <li>Manned gate</li>
+          <li>Clubhouse</li>
+          <li>Elevated water tank</li>
+          <li>Back-up borehole</li>
+          <li>Thicket fence for each house</li>
+          <li>Tinted windows</li>
+        </ul>
+      </div>
+
+      <div class="features">
+        <h4>Price Details</h4>
+        <ul>
+          <li>Cash Price: KES 87M</li>
+          <li>Mortgage Price: KES 92M</li>
+          <li>Mortgage Deposit: From 10%</li>
         </ul>
       </div>
     </div>
@@ -521,8 +547,16 @@
           <label for="date">Preferred Viewing Date</label>
           <input type="date" id="date" required>
         </div>
-        <button type="submit">Book via WhatsApp</button>
+        <div class="form-group">
+          <label for="budget">Payment Amount (KSH)</label>
+          <input type="number" id="budget" required min="0" step="1000" placeholder="Enter viewing fee">
+        </div>
+        <button type="submit">Proceed to Payment</button>
       </form>
+      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
+        <h3>Complete Payment</h3>
+        <!-- Pesapal iframe will be inserted here -->
+      </div>
     </div>
   </div>
 
@@ -538,6 +572,9 @@
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/project.js"></script>
+  <!-- Required scripts for Pesapal integration -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="assets/js/pesapal.js"></script>
   <script src="assets/js/booking.js"></script>
 </body>
 </html>

@@ -132,42 +132,59 @@
     .features {
       width: 100%;
       max-width: 1000px;
-      margin: 0 auto;
+      margin: 0 auto 2rem;
       background: #f8f9fa;
-      padding: 2rem;
+      padding: 2.5rem;
       border-radius: 8px;
     }
 
     .features h4 {
       color: #34abeb;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       text-align: center;
+      font-size: 1.3rem;
+      border-bottom: 2px solid #34abeb;
+      padding-bottom: 0.5rem;
     }
 
     .features ul {
       list-style: none;
       padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
       width: 100%;
     }
 
     .features li {
-      margin-bottom: 0.5rem;
-      padding-left: 1.5rem;
+      margin: 0;
+      padding: 1rem 1.5rem 1rem 2.5rem;
       position: relative;
-      flex: 0 0 calc(25% - 2rem);
-      min-width: 200px;
-      text-align: left;
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+      display: flex;
+      align-items: center;
     }
 
     .features li:before {
       content: "✓";
       color: #34abeb;
       position: absolute;
-      left: 0;
+      left: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .features li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+      .features ul {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
     }
 
     /* Gallery Section */
@@ -363,8 +380,8 @@
   <section class="project-hero">
     <img src="assets/images/Easternville/house-front.jpeg" alt="Easternville Front View" />
     <div class="hero-text">
-      <h2>Easternville</h2>
-      <p>Modern living in a serene environment</p>
+      <h2>Easternville Masterplan</h2>
+      <p>Premium living along Eastern Bypass</p>
     </div>
   </section>
 
@@ -373,20 +390,55 @@
     <div class="project-info">
       <div class="project-overview">
         <h3>Project Overview</h3>
-        <p>Easternville offers a perfect blend of modern architecture and comfortable living spaces. These homes are designed for those who appreciate both style and functionality.</p>
+        <p>Easternville is a masterplan estate spanning 100 acres with 1440 units and 10 acres of amenities. Phase one features 29 acres with 390 units across 14 courts and 3 acres of dedicated amenities.</p>
       </div>
       
       <div class="features">
-        <h4>Key Features</h4>
+        <h4>Price Details</h4>
         <ul>
-          <li>Contemporary design</li>
-          <li>Spacious interiors</li>
-          <li>Modern kitchen</li>
-          <li>Elegant bedrooms</li>
-          <li>Beautiful outdoor spaces</li>
-          <li>Secure compound</li>
-          <li>Ample parking</li>
-          <li>Landscaped gardens</li>
+          <li>Cash Price: KES 12.6M</li>
+          <li>Installments: KES 13.1M</li>
+          <li>Mortgage: KES 13.55M (20% deposit)</li>
+          <li>Whole Court: KES 353M</li>
+          <li>Expected Rental Income: KES 105,000</li>
+          <li>ROI after 2 years: KES 3.5M per unit</li>
+        </ul>
+      </div>
+
+      <div class="features">
+        <h4>Community Amenities</h4>
+        <ul>
+          <li>Full size football pitch</li>
+          <li>Jogging track</li>
+          <li>Basketball court</li>
+          <li>Tennis court</li>
+          <li>Swimming pool</li>
+          <li>24-hour daycare</li>
+          <li>Clubhouse</li>
+          <li>Gym</li>
+          <li>Barbershop</li>
+          <li>Salon</li>
+          <li>Minimarket</li>
+          <li>Skating rink</li>
+          <li>Kids play area</li>
+        </ul>
+      </div>
+
+      <div class="features">
+        <h4>Property Features</h4>
+        <ul>
+          <li>Fitted kitchen with 5 burner cooker</li>
+          <li>Built-in oven</li>
+          <li>Built-in microwave</li>
+          <li>Hood extractor</li>
+          <li>Full glass shower cubicles</li>
+          <li>Solar water heaters</li>
+          <li>Private garden</li>
+          <li>Usable roof top terrace</li>
+          <li>Private meshed compound</li>
+          <li>Optional rooftop lounge</li>
+          <li>Optional Pagolla</li>
+          <li>Optional aluminium windows</li>
         </ul>
       </div>
     </div>
@@ -649,51 +701,24 @@
           <label for="date">Preferred Viewing Date</label>
           <input type="date" id="date" required>
         </div>
-        <button type="submit">Book via WhatsApp</button>
+        <div class="form-group">
+          <label for="budget">Payment Amount (KSH)</label>
+          <input type="number" id="budget" required min="0" step="1000" placeholder="Enter viewing fee">
+        </div>
+        <button type="submit">Proceed to Payment</button>
       </form>
+      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
+        <h3>Complete Payment</h3>
+        <!-- Pesapal iframe will be inserted here -->
+      </div>
     </div>
   </div>
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/project.js"></script>
-  <script>
-    // Booking form functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const fab = document.querySelector('.fab');
-      const modal = document.querySelector('.booking-modal');
-      const closeBtn = document.querySelector('.close-btn');
-      const bookingForm = document.getElementById('bookingForm');
-      const whatsappNumber = '+254712345678'; // Replace with your actual WhatsApp number
-
-      fab.addEventListener('click', () => {
-        modal.classList.add('active');
-      });
-
-      closeBtn.addEventListener('click', () => {
-        modal.classList.remove('active');
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.classList.remove('active');
-        }
-      });
-
-      bookingForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const phone = document.getElementById('phone').value;
-        const property = document.getElementById('property').value;
-        const date = document.getElementById('date').value;
-
-        const message = `Hello! I would like to book a viewing:\n\nName: ${name}\nPhone: ${phone}\nProperty: ${property}\nPreferred Date: ${date}`;
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-        
-        window.open(whatsappUrl, '_blank');
-        modal.classList.remove('active');
-        bookingForm.reset();
-      });
-    });
-  </script>
+  <!-- Required scripts for Pesapal integration -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="assets/js/pesapal.js"></script>
+  <script src="assets/js/booking.js"></script>
 </body>
 </html>

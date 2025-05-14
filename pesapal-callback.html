@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Status - Property Consult Limited</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="assets/js/pesapal.js"></script>
+    <style>
+        .payment-status {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status-icon {
+            font-size: 48px;
+            margin-bottom: 1rem;
+        }
+        .success { color: #25d366; }
+        .error { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="back-button">Home</a>
+            <h1 class="logo">Property Consult Limited</h1>
+        </div>
+    </header>
+
+    <div class="payment-status">
+        <div id="statusContent">
+            <div class="status-icon">⏳</div>
+            <h2>Processing Payment</h2>
+            <p>Please wait while we verify your payment...</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderTrackingId = urlParams.get('pesapal_transaction_tracking_id');
+            const orderMerchantReference = urlParams.get('pesapal_merchant_reference');
+            const orderNotificationType = urlParams.get('pesapal_notification_type');
+
+            if (!orderTrackingId || !orderMerchantReference) {
+                showError('Invalid payment response');
+                return;
+            }
+
+            try {
+                const pesapal = new PesapalAPI(
+                    'YOUR_PESAPAL_CONSUMER_KEY',
+                    'YOUR_PESAPAL_CONSUMER_SECRET',
+                    true // Set to false in production
+                );
+
+                const paymentStatus = await pesapal.checkPaymentStatus(
+                    orderMerchantReference,
+                    orderTrackingId
+                );
+
+                if (paymentStatus.status === 'COMPLETED') {
+                    showSuccess();
+                } else {
+                    showError('Payment was not completed');
+                }
+            } catch (error) {
+                console.error('Error verifying payment:', error);
+                showError('Failed to verify payment');
+            }
+        });
+
+        function showSuccess() {
+            const statusContent = document.getElementById('statusContent');
+            statusContent.innerHTML = `
+                <div class="status-icon success">✓</div>
+                <h2>Payment Successful</h2>
+                <p>Your payment has been processed successfully.</p>
+                <p>You will receive a confirmation message shortly.</p>
+                <a href="index.html" class="btn" style="display: inline-block; margin-top: 1rem;">Return Home</a>
+            `;
+        }
+
+        function showError(message) {
+            const statusContent = document.getElementById('statusContent');
+            statusContent.innerHTML = `
+                <div class="status-icon error">✗</div>
+                <h2>Payment Failed</h2>
+                <p>${message}</p>
+                <a href="index.html" class="btn" style="display: inline-block; margin-top: 1rem;">Return Home</a>
+            `;
+        }
+    </script>
+</body>
+</html>
