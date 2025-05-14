@@ -250,6 +250,52 @@
       width: 100%;
       margin-top: 1rem;
     }
+
+    .pricing-info {
+      background: #f8f9fa;
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      border-left: 4px solid #34abeb;
+    }
+
+    .pricing-info h3 {
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .pricing-info h4 {
+      color: #34abeb;
+      margin: 1.5rem 0 1rem;
+      font-size: 1.1rem;
+    }
+
+    .pricing-info ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pricing-info li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .pricing-info li:before {
+      content: "•";
+      color: #34abeb;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-info {
+        padding: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -271,7 +317,7 @@
   <section class="city-header">
     <img src="assets/images/Nairobi/city-view.jpeg" alt="Nairobi City View" />
     <div class="city-title">
-      <h1>Nairobi</h1>
+      <h1>Nairobi, Kenya</h1>
     </div>
   </section>
 
@@ -281,7 +327,25 @@
       <div class="city-description">
         <p>Nairobi, Kenya's capital and largest city, is a vibrant metropolis that serves as the economic and cultural hub of East Africa. Known as the "Green City in the Sun," Nairobi offers a unique blend of urban sophistication and natural beauty.</p>
         
-        <p>The city is home to numerous international organizations, including the United Nations Environment Programme (UNEP) and the United Nations Human Settlements Programme (UN-Habitat). Nairobi's real estate market is booming, with modern developments in areas like Westlands, Kilimani, and Karen.</p>
+        <p>The city is home to numerous international organizations, including the United Nations Environment Programme (UNEP) and the United Nations Human Settlements Programme (UN-Habitat). Nairobi's real estate market is booming, with modern developments in areas like Westlands, Kilimani, Kileleshwa and Lavington.</p>
+
+        <div class="pricing-info">
+          <h3>Property Prices in Premium Areas</h3>
+          <h4>Apartment Purchase Prices</h4>
+          <ul>
+            <li>1 Bedroom: From KES 7M</li>
+            <li>2 Bedrooms: From KES 10M</li>
+            <li>3 Bedrooms: From KES 14M</li>
+            <li>4 Bedrooms: From KES 20M</li>
+            <li>5 Bedrooms: From KES 35M</li>
+            <li>Penthouses: From KES 40M</li>
+          </ul>
+
+          <h4>House Rentals</h4>
+          <ul>
+            <li>3, 4 & 5 Bedroom Houses: From USD 1,500/month</li>
+          </ul>
+        </div>
         
         <p>Nairobi National Park, located just outside the city center, is the only national park in the world within a capital city, offering residents and visitors the chance to see wildlife against a backdrop of city skyscrapers.</p>
       </div>
@@ -342,8 +406,12 @@
           <label for="date">Preferred Viewing Date</label>
           <input type="date" id="date" required>
         </div>
-        <button type="submit">Book via WhatsApp</button>
+        <button type="submit">Proceed to Payment</button>
       </form>
+      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
+        <h3>Complete Payment</h3>
+        <!-- Pesapal iframe will be inserted here -->
+      </div>
     </div>
   </div>
 
@@ -359,6 +427,9 @@
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/project.js"></script>
+  <!-- Required scripts for Pesapal integration -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="assets/js/pesapal.js"></script>
   <script src="assets/js/booking.js"></script>
 </body>
 </html>

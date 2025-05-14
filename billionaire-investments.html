@@ -265,6 +265,84 @@
       width: 100%;
       margin-top: 1rem;
     }
+
+    .gallery-section {
+      padding: 4rem 0;
+      background-color: white;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .gallery-item-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    /* Zoom Modal Enhancements */
+    .zoom-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 2000;
+      cursor: pointer;
+    }
+
+    .zoom-modal.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .zoom-modal img {
+      max-width: 90%;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+
+    .header-logo {
+      color: #333;
+    }
+
+    #pesapal-button-container {
+      display: none;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -272,7 +350,7 @@
   <header class="site-header">
     <div class="container">
       <a href="index.html" class="back-button">Home</a>
-      <h1 class="logo" style="color: #333;">Property Consult Limited</h1>
+      <h1 class="logo header-logo">Property Consult Limited</h1>
       <nav>
         <ul class="nav-list">
           <li><a href="index.html#listings">Listings</a></li>
@@ -281,6 +359,48 @@
       </nav>
     </div>
   </header>
+
+  <!-- GALLERY SECTION -->
+  <section class="gallery-section">
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/school.jpeg" alt="School Investment" onclick="openModal(this.src)">
+        <div class="gallery-item-title">School Campus View</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/school2.jpeg" alt="School Facilities" onclick="openModal(this.src)">
+        <div class="gallery-item-title">Modern School Facilities</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/school3.jpeg" alt="School Infrastructure" onclick="openModal(this.src)">
+        <div class="gallery-item-title">Educational Infrastructure</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/school4.jpeg" alt="School Development" onclick="openModal(this.src)">
+        <div class="gallery-item-title">Development Opportunity</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/school5.jpeg" alt="School Investment Project" onclick="openModal(this.src)">
+        <div class="gallery-item-title">Investment Project Overview</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/africa.jpeg" alt="African Investment" onclick="openModal(this.src)">
+        <div class="gallery-item-title">Pan-African Investment Opportunities</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/africans.jpeg" alt="African Development" onclick="openModal(this.src)">
+        <div class="gallery-item-title">African Development Projects</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/welcome-to-kenya.jpeg" alt="Kenya Investment" onclick="openModal(this.src)">
+        <div class="gallery-item-title">Kenyan Investment Landscape</div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/billionaire_investments/welcome-to-kenya2.jpeg" alt="Kenya Development" onclick="openModal(this.src)">
+        <div class="gallery-item-title">Kenya Development Opportunities</div>
+      </div>
+    </div>
+  </section>
 
   <!-- INVESTMENT SECTION -->
   <section class="investment-section">
@@ -331,7 +451,7 @@
   <div class="booking-modal">
     <div class="booking-form">
       <button class="close-btn">&times;</button>
-      <h2>Book Property Viewing</h2>
+      <h2>Book Investment Consultation</h2>
       <form id="bookingForm">
         <div class="form-group">
           <label for="name">Your Name</label>
@@ -351,13 +471,24 @@
           <label for="date">Preferred Viewing Date</label>
           <input type="date" id="date" required>
         </div>
-        <button type="submit">Book via WhatsApp</button>
+        <div class="form-group">
+          <label for="budget">Consultation Fee (KSH)</label>
+          <input type="number" id="budget" required min="0" step="1000" placeholder="Enter consultation fee">
+        </div>
+        <button type="submit">Proceed to Payment</button>
       </form>
+      <div id="pesapal-button-container">
+        <h3>Complete Payment</h3>
+        <!-- Pesapal iframe will be inserted here -->
+      </div>
     </div>
   </div>
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/project.js"></script>
+  <!-- Required scripts for Pesapal integration -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="assets/js/pesapal.js"></script>
   <script src="assets/js/booking.js"></script>
   <script>
     // Initialize PDF viewer
@@ -435,6 +566,21 @@
         currentScale -= 0.25;
         renderPage(pageNum);
       });
+    });
+
+    // Add modal functionality
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.classList.add('active');
+      modalImg.src = src;
+    }
+
+    // Close modal when clicking outside the image
+    document.getElementById('imageModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('active');
+      }
     });
   </script>
 </body>

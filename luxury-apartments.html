@@ -140,13 +140,15 @@
 
     .features h4 {
       color: #34abeb;
-      margin-bottom: 1rem;
-      text-align: center;
+      margin: 2rem 0 1rem 0;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #34abeb;
     }
 
     .features ul {
       list-style: none;
       padding: 0;
+      margin: 0 0 2rem 0;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -155,8 +157,11 @@
     }
 
     .features li {
+      padding: 0.5rem 1rem;
       margin-bottom: 0.5rem;
-      padding-left: 1.5rem;
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       position: relative;
       flex: 0 0 calc(25% - 2rem);
       min-width: 200px;
@@ -170,76 +175,24 @@
       left: 0;
     }
 
-    /* Gallery Section */
-    .project-gallery-grid {
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 0 2rem;
+    .amenities-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
+      gap: 1rem !important;
     }
 
-    .gallery {
+    .amenities-grid li {
       display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .gallery-category {
-      margin-bottom: 2rem;
-      width: 100%;
-    }
-
-    .gallery-category h3 {
-      font-size: 1.5rem;
-      color: #333;
-      margin-bottom: 1rem;
-      padding-left: 1rem;
-      border-left: 4px solid #34abeb;
-      text-align: center;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      padding: 1rem;
-      width: 100%;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
+      align-items: center;
+      background: white;
+      padding: 1rem !important;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-      aspect-ratio: 4/3;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
 
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .gallery-item p {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 0.5rem;
-      font-size: 0.9rem;
-      text-align: center;
-      margin: 0;
+    .amenities-grid li:hover {
+      transform: translateY(-2px);
     }
 
     @media (max-width: 768px) {
@@ -250,6 +203,10 @@
 
       .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+
+      .amenities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
       }
     }
 
@@ -348,6 +305,96 @@
       width: 100%;
       margin-top: 1rem;
     }
+
+    /* Gallery Styles */
+    .project-gallery-grid {
+      padding: 2rem;
+      background: #fff;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    .gallery-category {
+      margin-bottom: 3rem;
+    }
+
+    .gallery-category h3 {
+      color: #333;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #34abeb;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin: 0 auto;
+      max-width: 1400px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 3/2;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #f8f9fa;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      margin: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 1200px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .gallery-category h3 {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-gallery-grid {
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -372,16 +419,67 @@
   <section class="project-details container">
     <div class="project-info">
       <h3>Project Overview</h3>
-      <p>Experience the epitome of luxury living in our premium apartments. These residences offer sophisticated design, high-end finishes, and exceptional amenities for the discerning resident.</p>
+      <p>Experience the epitome of luxury living in our premium apartments located in Kilimani, Kileleshwa, Westlands, and Lavington areas. These exclusive residences offer sophisticated design, high-end finishes, and exceptional amenities for the discerning resident in Nairobi's green high-rise city.</p>
       
       <div class="features">
-        <h4>Key Features</h4>
+        <h4>Daily Rentals (Airbnb)</h4>
         <ul>
-          <li>Modern architectural design</li>
-          <li>High-end finishes</li>
-          <li>Spacious living areas</li>
-          <li>Luxurious master suites</li>
-          <li>Premium amenities</li>
+          <li>Studio: 4,000 - 5,000 KES/day</li>
+          <li>1 Bedroom: 55 USD/day</li>
+          <li>2 Bedrooms: 78 USD/day</li>
+          <li>3 Bedrooms: 100 USD/day</li>
+        </ul>
+
+        <h4>Monthly Rentals</h4>
+        <ul>
+          <li>2 Bedrooms: From 550 USD/month</li>
+          <li>3 Bedrooms: From 800 USD/month</li>
+        </ul>
+
+        <h4>Purchase Prices</h4>
+        <ul>
+          <li>1 Bedroom: From 54,000 USD</li>
+          <li>2 Bedrooms: From 85,000 USD</li>
+          <li>3 Bedrooms: From 116,000 USD</li>
+          <li>4 Bedrooms: From 250,000 USD</li>
+        </ul>
+
+        <h4>Kilimani, Kileleshwa, Lavington, Westlands Prices (KES)</h4>
+        <ul>
+          <li>1 Bedroom: From KES 7M</li>
+          <li>2 Bedrooms: From KES 10M</li>
+          <li>3 Bedrooms: From KES 14M</li>
+          <li>4 Bedrooms: From KES 20M</li>
+          <li>5 Bedrooms: From KES 35M</li>
+          <li>Penthouse: From KES 40M</li>
+        </ul>
+
+        <h4>Standard Amenities</h4>
+        <ul class="amenities-grid">
+          <li>High-speed Lift</li>
+          <li>Gym</li>
+          <li>Borehole</li>
+          <li>Satellite TV</li>
+          <li>Dining Section</li>
+          <li>Ample Parking</li>
+          <li>Back-up Generator</li>
+          <li>Heated Swimming Pool</li>
+          <li>Master Bedroom Balcony</li>
+          <li>All Bedrooms En-suite</li>
+          <li>Solar Water Heating System</li>
+          <li>Rooftop Panoramic Views Terrace</li>
+          <li>CCTV and Manned Security</li>
+          <li>Premium Location Access</li>
+        </ul>
+
+        <h4>Location Advantages</h4>
+        <ul>
+          <li>Close proximity to key business districts</li>
+          <li>Access to Ngong Road, Upper Hill, Westlands</li>
+          <li>Easy access to Expressway and CBD</li>
+          <li>Connection to Karen area</li>
+          <li>Beautiful tree cover and clean roads</li>
+          <li>Access to all important infrastructure</li>
         </ul>
       </div>
     </div>
@@ -618,8 +716,16 @@
           <label for="date">Preferred Viewing Date</label>
           <input type="date" id="date" required>
         </div>
-        <button type="submit">Book via WhatsApp</button>
+        <div class="form-group">
+          <label for="budget">Payment Amount (KSH)</label>
+          <input type="number" id="budget" required min="0" step="1000" placeholder="Enter viewing fee">
+        </div>
+        <button type="submit">Proceed to Payment</button>
       </form>
+      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
+        <h3>Complete Payment</h3>
+        <!-- Pesapal iframe will be inserted here -->
+      </div>
     </div>
   </div>
 
@@ -635,6 +741,9 @@
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/project.js"></script>
+  <!-- Required scripts for Pesapal integration -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="assets/js/pesapal.js"></script>
   <script src="assets/js/booking.js"></script>
 </body>
 </html>

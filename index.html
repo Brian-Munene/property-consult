@@ -33,11 +33,16 @@
   <!-- HEADER / NAV -->
   <header class="site-header">
     <div class="container">
-      <h1 class="logo">Property Consult Limited</h1>
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="assets/images/logo.jpeg" alt="Property Consult Limited Logo" class="logo-img">
+        </a>
+      </div>
       <nav>
         <ul class="nav-list">
           <li><a href="#listings">Listings</a></li>
           <li><a href="#cities">Diaspora</a></li>
+          <li><a href="#billionaire-investments">Billionaire Investments</a></li>
         </ul>
       </nav>
     </div>
@@ -74,9 +79,6 @@
       </div>
       <button class="carousel-control prev">❮</button>
       <button class="carousel-control next">❯</button>
-    </div>
-    <div class="hero-text">
-      <a href="billionaire-investments.html" class="btn">Billionaire Investment</a>
     </div>
   </section>
 
@@ -160,46 +162,80 @@
         <article class="city-card">
           <a href="nairobi.html" class="city-card-link">
             <img src="assets/images/Nairobi/city-view.jpeg" alt="Nairobi City View" />
-            <h3>Nairobi</h3>
+            <h3>Nairobi, Kenya</h3>
           </a>
         </article>
         <article class="city-card">
           <a href="mombasa.html" class="city-card-link">
             <img src="assets/images/Mombasa/beach-overview.jpeg" alt="Mombasa Beach Overview" />
-            <h3>Mombasa</h3>
+            <h3>Mombasa, Kenya</h3>
           </a>
         </article>
         <article class="city-card">
           <a href="kisumu.html" class="city-card-link">
             <img src="assets/images/Kisumu/lake.jpeg" alt="Kisumu Lake View" />
-            <h3>Kisumu</h3>
+            <h3>Kisumu, Kenya</h3>
           </a>
         </article>
         <article class="city-card">
           <a href="kampala.html" class="city-card-link">
             <img src="assets/images/Kampala/city-view.jpeg" alt="Kampala City View" />
-            <h3>Kampala</h3>
+            <h3>Kampala, Uganda</h3>
           </a>
         </article>
         <article class="city-card">
           <a href="kigali.html" class="city-card-link">
             <img src="assets/images/Kigali/city-overview.jpeg" alt="Kigali City Overview" />
-            <h3>Kigali</h3>
+            <h3>Kigali, Rwanda</h3>
           </a>
         </article>
         <article class="city-card">
           <a href="addis-ababa.html" class="city-card-link">
             <img src="assets/images/Addis-Ababa/city-landscape.jpeg" alt="Addis Ababa City Landscape" />
-            <h3>Addis Ababa</h3>
+            <h3>Addis Ababa, Ethiopia</h3>
           </a>
         </article>
         <article class="city-card">
           <a href="daresalam.html" class="city-card-link">
             <img src="assets/images/Daresalam/city-skyline.jpeg" alt="Daresalam City Skyline" />
-            <h3>Daresalam</h3>
+            <h3>Dar es Salaam, Tanzania</h3>
           </a>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- BILLIONAIRE INVESTMENTS -->
+  <section id="billionaire-investments" class="cities container">
+    <h2>Billionaire Investments</h2>
+    <div class="grid">
+      <article class="city-card">
+        <a href="billionaire-investments.html" class="city-card-link">
+          <img src="assets/images/billionaire_investments/school.jpeg" alt="Premium Investment Opportunities" />
+          <div class="card-content">
+            <h3>Premium Investment Opportunities</h3>
+            <p>Discover exclusive high-value investment opportunities across East Africa. Our carefully curated portfolio includes premium real estate developments, commercial properties, and strategic investment projects.</p>
+          </div>
+        </a>
+      </article>
+      <article class="city-card">
+        <a href="billionaire-investments.html" class="city-card-link">
+          <img src="assets/images/billionaire_investments/africa.jpeg" alt="Africa Investment" />
+          <div class="card-content">
+            <h3>Strategic African Investments</h3>
+            <p>Access prime investment opportunities in rapidly developing African markets.</p>
+          </div>
+        </a>
+      </article>
+      <article class="city-card">
+        <a href="billionaire-investments.html" class="city-card-link">
+          <img src="assets/images/billionaire_investments/welcome-to-kenya.jpeg" alt="Kenya Investment" />
+          <div class="card-content">
+            <h3>Kenyan Real Estate Portfolio</h3>
+            <p>Explore our selection of high-end properties and development projects in Kenya.</p>
+          </div>
+        </a>
+      </article>
     </div>
   </section>
 
@@ -231,6 +267,36 @@
           <input type="tel" id="phone" required placeholder="+254 XXX XXX XXX">
         </div>
         <div class="form-group">
+          <label for="budget">Budget (KSH)</label>
+          <input type="number" id="budget" required min="0" step="1000000" placeholder="Enter amount in KSH">
+        </div>
+        <div class="form-group">
+          <label for="houseType">House Type</label>
+          <select id="houseType" required>
+            <option value="">Select house type</option>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Villa">Villa</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Maisonette">Maisonette</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="location">Preferred Location</label>
+          <input type="text" id="location" required placeholder="Enter preferred location">
+        </div>
+        <div class="form-group">
+          <label for="bedrooms">Number of Bedrooms</label>
+          <select id="bedrooms" required>
+            <option value="">Select number of bedrooms</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5+</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="property">Property of Interest</label>
           <select id="property" required>
             <option value="">Select a property</option>
@@ -244,9 +310,14 @@
         <div class="form-group">
           <label for="date">Preferred Viewing Date</label>
           <input type="date" id="date" required>
+          <span class="error-message" id="dateError"></span>
         </div>
-        <button type="submit">Book via WhatsApp</button>
+        <button type="submit">Proceed to Payment</button>
       </form>
+      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
+        <h3>Complete Payment</h3>
+        <!-- Pesapal iframe will be inserted here -->
+      </div>
     </div>
   </div>
 
@@ -284,5 +355,8 @@
   <script src="assets/js/project.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/booking.js"></script>
+  <!-- Required scripts for Pesapal integration -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="assets/js/pesapal.js"></script>
 </body>
 </html>

@@ -271,7 +271,7 @@
   <section class="city-header">
     <img src="assets/images/Mombasa/beach-overview.jpeg" alt="Mombasa Beach Overview" />
     <div class="city-title">
-      <h1>Mombasa</h1>
+      <h1>Mombasa, Kenya</h1>
     </div>
   </section>
 
@@ -352,13 +352,20 @@
           <label for="date">Preferred Viewing Date</label>
           <input type="date" id="date" required>
         </div>
-        <button type="submit">Book via WhatsApp</button>
+        <button type="submit">Proceed to Payment</button>
       </form>
+      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
+        <h3>Complete Payment</h3>
+        <!-- Pesapal iframe will be inserted here -->
+      </div>
     </div>
   </div>
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/project.js"></script>
+  <!-- Required scripts for Pesapal integration -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="assets/js/pesapal.js"></script>
   <script src="assets/js/booking.js"></script>
 </body>
 </html>
