@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
-  
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navList = document.querySelector('.nav-list');
+
   // Handle scroll effects
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
@@ -16,45 +18,51 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const section = document.querySelector(this.getAttribute('href'));
       if (section) {
-        section.scrollIntoView({
-          behavior: 'smooth'
-        });
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+      // Close menu after click (for mobile/tablet)
+      if (navList && menuToggle && window.innerWidth <= 900) {
+        navList.classList.remove('active');
       }
     });
   });
 
-  // Mobile menu handling
-  const createMobileMenu = () => {
-    if (!document.querySelector('.menu-toggle')) {
-      const menuToggle = document.createElement('button');
-      menuToggle.className = 'menu-toggle';
-      menuToggle.innerHTML = '☰';
-      menuToggle.style.cssText = `
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        display: none;
-        padding: 0.5rem;
-      `;
-      
-      const nav = document.querySelector('nav');
-      nav.parentNode.insertBefore(menuToggle, nav);
-
-      menuToggle.addEventListener('click', () => {
-        const navList = document.querySelector('.nav-list');
-        navList.classList.toggle('active');
-      });
-
-      // Show/hide menu toggle based on screen size
-      const checkScreenSize = () => {
-        menuToggle.style.display = window.innerWidth <= 768 ? 'block' : 'none';
-      };
-
-      window.addEventListener('resize', checkScreenSize);
-      checkScreenSize(); // Initial check
-    }
-  };
-
-  createMobileMenu();
+  // Menu toggle logic for mobile/tablet
+  if (menuToggle && navList) {
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  }
 });
+
+// Diaspora Carousel Functionality
+(function() {
+  const carousel = document.querySelector('.diaspora-carousel');
+  if (!carousel) return;
+  const items = carousel.querySelectorAll('.diaspora-carousel-item');
+  const prevBtn = carousel.querySelector('.diaspora-carousel-control.prev');
+  const nextBtn = carousel.querySelector('.diaspora-carousel-control.next');
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    items.forEach((item, i) => {
+      item.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % items.length;
+    showSlide(currentIndex);
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    showSlide(currentIndex);
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  // Auto-rotate every 5 seconds
+  setInterval(nextSlide, 5000);
+})();
