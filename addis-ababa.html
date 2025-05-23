@@ -250,6 +250,31 @@
       width: 100%;
       margin-top: 1rem;
     }
+
+    .site-footer {
+      background-color: #333;
+      color: white;
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-facebook-link {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    .footer-copyright {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
   </style>
 </head>
 <body>
@@ -269,7 +294,7 @@
 
   <!-- CITY HEADER -->
   <section class="city-header">
-    <img src="assets/images/Addis-Ababa/city-landscape.jpeg" alt="Addis Ababa City Landscape" />
+    <img src="assets/images/Addis-Ababa/train.jpeg" alt="Addis Ababa City Landscape" />
     <div class="city-title">
       <h1>Addis Ababa, Ethiopia</h1>
     </div>
@@ -304,7 +329,7 @@
           <div class="caption">Main Street</div>
         </div>
         <div class="gallery-item">
-          <img src="assets/images/Addis-Ababa/train.jpeg" alt="Trian" />
+          <img src="assets/images/Addis-Ababa/train.jpeg" alt="Train" />
           <div class="caption">Train</div>
         </div>
         <div class="gallery-item">
@@ -349,7 +374,13 @@
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <p>© 2025 Property Consult Limited. All rights reserved.</p>
+    <div class="footer-flex">
+      <a href="https://www.facebook.com/share/19r5jpMC7F/" target="_blank" rel="noopener noreferrer" class="footer-facebook-link" title="Visit us on Facebook">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="#1877f3" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="16" cy="16" r="16" fill="#1877f3"/><path d="M21.5 16h-3v9h-3v-9h-2v-3h2v-2c0-2.2 1.3-3.5 3.3-3.5.7 0 1.4.1 1.7.2v2.7h-1.2c-.7 0-.8.3-.8.8v1.8h3l-.4 3z" fill="#fff"/></svg>
+        <span class="sr-only">Facebook</span>
+      </a>
+      <p class="footer-copyright">© 2025 Property Consult Limited. All rights reserved.</p>
+    </div>
   </footer>
 
   <!-- Zoom Modal -->
