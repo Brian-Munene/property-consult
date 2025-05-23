@@ -48,17 +48,17 @@
             const orderMerchantReference = urlParams.get('pesapal_merchant_reference');
             const orderNotificationType = urlParams.get('pesapal_notification_type');
 
-            if (!orderTrackingId || !orderMerchantReference) {
-                showError('Invalid payment response');
-                return;
-            }
+if (!orderTrackingId || !orderMerchantReference) {
+    showError('Payment verification failed: Missing transaction reference. Please contact support with your payment details.');
+    return;
+}
 
             try {
-                const pesapal = new PesapalAPI(
-                    'YOUR_PESAPAL_CONSUMER_KEY',
-                    'YOUR_PESAPAL_CONSUMER_SECRET',
-                    true // Set to false in production
-                );
+ const pesapal = new PesapalAPI(
+     window.pesapalConfig.consumer_key,
+     window.pesapalConfig.consumer_secret,
+     window.pesapalConfig.testing
+ );
 
                 const paymentStatus = await pesapal.checkPaymentStatus(
                     orderMerchantReference,
