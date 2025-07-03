@@ -1,30 +1,8 @@
-// WhatsApp configuration
-const WHATSAPP_NUMBER = '+254726600953';
-
-function renderPayPalButton() {
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: '10.00' // Replace with dynamic amount if needed
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('Payment completed by ' + details.payer.name.given_name);
-            });
-        }
-    }).render('#paypal-button-container');
-}
-
-// Booking form functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Get DOM elements
     const fab = document.querySelector('.fab');
     const modal = document.querySelector('.booking-modal');
-    const closeBtn = document.querySelector('.close-btn');
+    const closeBtn = document.querySelector('.booking-modal .close-btn');
     const bookingForm = document.getElementById('bookingForm');
     const pesapalContainer = document.getElementById('pesapal-button-container');
     const dateInput = document.getElementById('date');

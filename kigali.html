@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/navbar.css" />
   <link rel="stylesheet" href="assets/css/listings.css" />
+  <link rel="stylesheet" href="assets/css/footer.css" />
   <style>
     .city-header {
       position: relative;
@@ -168,95 +169,7 @@
       }
     }
 
-    /* Floating Action Button */
-    .fab {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background-color: #25d366;
-      color: white;
-      width: 160px;
-      height: 50px;
-      border-radius: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      z-index: 1000;
-      border: none;
-      font-size: 1rem;
-      transition: transform 0.2s;
-    }
 
-    .fab:hover {
-      transform: scale(1.05);
-    }
-
-    /* Booking Form Modal */
-    .booking-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1001;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .booking-modal.active {
-      display: flex;
-    }
-
-    .booking-form {
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 500px;
-      position: relative;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-
-    .form-group button {
-      background-color: #25d366;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -361,51 +274,7 @@
     <img id="modalImage" src="" alt="Zoomed image">
   </div>
 
-  <!-- Floating Action Button -->
-  <button class="fab">Book Appointment</button>
-
-  <!-- Booking Form Modal -->
-  <div class="booking-modal">
-    <div class="booking-form">
-      <button class="close-btn">&times;</button>
-      <h2>Book Property Viewing</h2>
-      <form id="bookingForm">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" required placeholder="+254 XXX XXX XXX">
-        </div>
-        <div class="form-group">
-          <label for="property">Interest</label>
-          <select id="property" required>
-            <option value="Kigali Visit">Kigali Visit</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Preferred Viewing Date</label>
-          <input type="date" id="date" required>
-        </div>
-        <div class="form-group">
-          <label for="budget">Payment Amount (RWF)</label>
-          <input type="number" id="budget" required min="0" step="1000" placeholder="Enter viewing fee in RWF">
-        </div>
-        <button type="submit">Proceed to Payment</button>
-      </form>
-      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
-        <h3>Complete Payment</h3>
-        <!-- Pesapal iframe will be inserted here -->
-      </div>
-    </div>
-  </div>
-
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/project.js"></script>
-  <!-- Required scripts for Pesapal integration -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-  <script src="assets/js/pesapal.js"></script>
-  <script src="assets/js/booking.js"></script>
 </body>
 </html>

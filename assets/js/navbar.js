@@ -42,6 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const items = carousel.querySelectorAll('.diaspora-carousel-item');
   const prevBtn = carousel.querySelector('.diaspora-carousel-control.prev');
   const nextBtn = carousel.querySelector('.diaspora-carousel-control.next');
+  
+  // Exit early if required elements are missing
+  if (!items.length || !prevBtn || !nextBtn) {
+    console.warn('Carousel initialization failed: missing required elements');
+    return;
+  }
+  
   let currentIndex = 0;
 
   function showSlide(index) {
