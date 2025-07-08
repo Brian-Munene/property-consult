@@ -49,6 +49,30 @@ dateInput.addEventListener('change', function(e) {
         }
     });
 
+    // Modularize: extract PayPal rendering to a function
+    function renderPayPalButton(amount) {
+        // Remove any existing PayPal button
+        const paypalContainer = document.getElementById('paypal-button-container');
+        paypalContainer.innerHTML = '';
+        if (window.paypal) {
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{ amount: { value: amount } }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    pesapalContainer.innerHTML = '<h3>Payment Successful!</h3><p>Thank you for your booking.</p>';
+                },
+                onError: function(err) {
+                    pesapalContainer.innerHTML = '<h3>Payment Error</h3><p>' + err + '</p>';
+                }
+            }).render('#paypal-button-container');
+        } else {
+            paypalContainer.innerHTML = '<p>PayPal SDK not loaded. Please refresh the page.</p>';
+        }
+    }
+
     bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         // Validate date before submission
@@ -68,31 +92,22 @@ dateInput.addEventListener('change', function(e) {
         try {
             pesapalContainer.style.display = 'block';
             pesapalContainer.innerHTML = '<h3>Complete Payment</h3><div id="paypal-button-container"></div>';
-            // Render PayPal button with dynamic amount
-            if (window.paypal) {
-                paypal.Buttons({
-                    createOrder: function(data, actions) {
-                        return actions.order.create({
-                            purchase_units: [{
-                                amount: { value: formData.amount }
-                            }]
-                        });
-                    },
-                    onApprove: function(data, actions) {
-                        return actions.order.capture().then(function(details) {
-                            pesapalContainer.innerHTML = '<h3>Payment Successful!</h3><p>Thank you, ' + details.payer.name.given_name + '.</p>';
-                        });
-                    },
-                    onError: function(err) {
-                        pesapalContainer.innerHTML = '<h3>Payment Error</h3><p>' + err + '</p>';
-                    }
-                }).render('#paypal-button-container');
-            } else {
-                pesapalContainer.innerHTML += '<p>PayPal SDK not loaded. Please refresh the page.</p>';
-            }
+            // Show loading indicator
+            pesapalContainer.innerHTML += '<div id="paypal-loading" style="margin-top:10px;">Loading PayPal...</div>';
+            // Disable submit button
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            if (submitBtn) submitBtn.disabled = true;
+            // Modularized PayPal rendering
+            setTimeout(() => {
+                renderPayPalButton(formData.amount);
+                const loading = document.getElementById('paypal-loading');
+                if (loading) loading.remove();
+                if (submitBtn) submitBtn.disabled = false;
+            }, 500); // Simulate loading
         } catch (error) {
             console.error('Payment initialization failed:', error);
             alert('Failed to initialize payment. Please try again.');
+            if (submitBtn) submitBtn.disabled = false;
         }
     });
 });

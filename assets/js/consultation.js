@@ -1,10 +1,21 @@
 // Global variables
 const WHATSAPP_NUMBER = '254726600953';
-let paymentCompleted = false;
 let modal = null;
-let openModalBtn = null;
-let closeModalBtn = null;
-let paypalInitialized = false;
+
+// Helper function to update the step navbar
+function updateStepNavbar(stepNumber) {
+    const step1 = document.getElementById('step-nav-1');
+    const step2 = document.getElementById('step-nav-2');
+    if (step1 && step2) {
+        if (stepNumber === 1) {
+            step1.classList.add('active');
+            step2.classList.remove('active');
+        } else if (stepNumber === 2) {
+            step1.classList.remove('active');
+            step2.classList.add('active');
+        }
+    }
+}
 
 // Helper function to show/hide booking steps
 function showStep(stepNumber) {
@@ -12,6 +23,14 @@ function showStep(stepNumber) {
     steps.forEach((step, index) => {
         step.classList.toggle('hidden', index + 1 !== stepNumber);
     });
+    updateStepNavbar(stepNumber);
+    // Focus the first input in step 2 for better UX
+    if (stepNumber === 2) {
+        setTimeout(() => {
+            const nameInput = document.getElementById('name');
+            if (nameInput) nameInput.focus();
+        }, 200);
+    }
 }
 
 // Modal functionality
@@ -19,14 +38,10 @@ function openModal() {
     if (modal) {
         modal.classList.add('active');
         showStep(1);
-        if (!paypalInitialized) {
-            initializePayPal();
-        }
         const form = document.getElementById('consultationForm');
         if (form) {
             form.reset();
         }
-        paymentCompleted = false;
     }
 }
 
@@ -36,61 +51,45 @@ function closeModal() {
     }
 }
 
-// Initialize PayPal button
-function initializePayPal() {
-    if (paypalInitialized || !document.getElementById('paypal-button-container')) return;
-
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: '1000.00',
-                        currency_code: 'USD'
-                    },
-                    description: 'Consultation Fee'
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                paymentCompleted = true;
-                
-                const paypalContainer = document.getElementById('paypal-button-container');
-                paypalContainer.innerHTML = `
-                    <div class="payment-success">
-                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" stroke="#25d366" stroke-width="4"/>
-                            <path class="checkmark__check" fill="none" stroke="#25d366" stroke-width="4" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                        </svg>
-                        <h4>Payment Successful!</h4>
-                        <p>Transaction ID: ${details.id}</p>
-                    </div>
-                `;
-
-                setTimeout(() => {
+// Render PayPal button for consultation modal
+function renderConsultationPayPalButton(retryCount = 0) {
+    const MAX_RETRIES = 10;
+    const paypalContainer = document.getElementById('paypal-container-KNTZTASJHPXU2');
+    if (!paypalContainer) return;
+    paypalContainer.innerHTML = '';
+    if (typeof paypal !== 'undefined') {
+        paypal.HostedButtons({
+            hostedButtonId: "KNTZTASJHPXU2",
+            onApprove: function(data, actions) {
+                try {
+                    localStorage.setItem('paymentId', data.orderID);
+                    showNotification('Payment completed successfully! Please proceed to step 2.', 'success');
+                    console.log('PayPal payment approved, transitioning to step 2');
                     showStep(2);
-                }, 1500);
-            });
-        },
-        onError: function(err) {
-            console.error('PayPal Error:', err);
-            alert('There was an error processing your payment. Please try again.');
+                } catch (error) {
+                    console.error('Failed to save payment data:', error);
+                    showNotification('Payment completed but failed to save. Please contact support.', 'error');
+                }
+            }
+        }).render("#paypal-container-KNTZTASJHPXU2")
+        .catch(function(error) {
+            console.error('PayPal button render error:', error);
+            paypalContainer.innerHTML = '<p class="error-message">Failed to load payment button. Please refresh the page or contact support.</p>';
+            showNotification('Failed to load payment button. Please refresh the page or contact support.', 'error');
+        });
+    } else {
+        if (retryCount < MAX_RETRIES) {
+            setTimeout(() => renderConsultationPayPalButton(retryCount + 1), 1000);
+        } else {
+            paypalContainer.innerHTML = '<p class="error-message">Payment system unavailable. Please try again later.</p>';
+            showNotification('Payment system unavailable. Please try again later.', 'error');
         }
-    }).render('#paypal-button-container');
-
-    paypalInitialized = true;
+    }
 }
 
 // Form submission handler
 function handleFormSubmit(e) {
     e.preventDefault();
-
-    if (!paymentCompleted) {
-        alert('Please complete the payment before submitting your information.');
-        showStep(1);
-        return;
-    }
 
     const formData = {
         name: document.getElementById('name').value,
@@ -111,7 +110,6 @@ function handleFormSubmit(e) {
 
     // Reset form and close modal
     this.reset();
-    paymentCompleted = false;
     closeModal();
 }
 
@@ -131,42 +129,22 @@ document.addEventListener('DOMContentLoaded', function() {
         closeConsultationBtn: closeConsultationBtn
     });
 
-    // Function to initialize PayPal button
-    function initializePayPalButton() {
-        if (typeof paypal !== 'undefined') {
-            paypal.HostedButtons({
-                hostedButtonId: "U798KMLCDHKJY",
-                onApprove: function(data, actions) {
-                    // Show success message
-                    alert('Payment completed successfully! Please proceed to step 2.');
-                    
-                    // Show step 2
-                    document.getElementById('step1').classList.add('hidden');
-                    document.getElementById('step2').classList.remove('hidden');
-                    
-                    // Store payment details
-                    localStorage.setItem('paymentId', data.orderID);
-                }
-            }).render("#paypal-button-container")
-            .catch(function(error) {
-                console.error('PayPal button render error:', error);
-            });
-        } else {
-            // If PayPal is not loaded yet, try again in 1 second
-            setTimeout(initializePayPalButton, 1000);
-        }
-    }
-
-    // Initialize PayPal button
-    initializePayPalButton();
-
-    // Show modal
-    consultationBtn.addEventListener('click', () => {
+    // Ensure PayPal button is always rendered when modal opens
+    function showConsultationModal() {
         consultationModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
-        // Re-initialize PayPal button when modal is opened
-        initializePayPalButton();
-    });
+        showStep(1);
+        renderConsultationPayPalButton();
+    }
+
+    // Attach to both .fab and .consultation-btn
+    const fabBtn = document.querySelector('.fab');
+    if (fabBtn) {
+        fabBtn.addEventListener('click', showConsultationModal);
+    }
+    if (consultationBtn) {
+        consultationBtn.addEventListener('click', showConsultationModal);
+    }
 
     // Close modal
     closeConsultationBtn.addEventListener('click', () => {
@@ -215,8 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reset form and modal state
     function resetForm() {
         consultationForm.reset();
-        document.getElementById('step1').classList.remove('hidden');
-        document.getElementById('step2').classList.add('hidden');
+        showStep(1);
         localStorage.removeItem('paymentId');
     }
 });

@@ -12,6 +12,7 @@
   <meta name="author" content="brianmunene69@gmail.com">
   <meta name="robots" content="index, follow">
   
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://propertyconsult.com/">
@@ -30,10 +31,8 @@
   <link rel="stylesheet" href="assets/css/listings.css" />
   <link rel="stylesheet" href="assets/css/consultation.css" />
   <script 
-    src="https://www.paypal.com/sdk/js?client-id=AZSKMhp99ewcOQRtKElEQHlErmQxsjOrdPJxdj_Cr_-2CimMh9srkJEklKwL2MrvfuxcbTVMN-lhy02DD&components=hosted-buttons&disable-funding=venmo&currency=USD"
-    async
-    defer
-  ></script>
+    src="https://www.paypal.com/sdk/js?client-id=BAA0NWC9bY70fc3NFLEPw75CDd45p-zNRoIVLIbxg4HNm7twBZYbRUxyRR8RSS7vEL9LSlcWu0M57I-raM&components=hosted-buttons&disable-funding=venmo&currency=USD">
+  </script>
 </head>
 <body>
   <!-- HEADER / NAV -->
@@ -190,14 +189,20 @@
       <!-- Consultation Modal -->
       <div class="consultation-modal">
         <div class="consultation-form-container">
+          <!-- Step Navbar -->
+          <nav class="consultation-steps-navbar">
+            <ul class="steps-list">
+              <li class="step-item step-payment active" id="step-nav-1">1. Pay Consultation Fee</li>
+              <li class="step-item step-form" id="step-nav-2">2. Complete Your Information</li>
+            </ul>
+          </nav>
           <button class="close-consultation-btn">&times;</button>
           <h2>Book Consultation</h2>
           
           <!-- Step 1: PayPal Payment -->
           <div class="booking-step" id="step1">
             <h4>Step 1: Pay Consultation Fee</h4>
-            <p>Please complete the payment of USD 1000 to proceed with the consultation booking.</p>
-            <div id="paypal-button-container" style="min-height: 150px;"></div>
+            <div id="paypal-container-KNTZTASJHPXU2"></div>
           </div>
 
           <!-- Step 2: Consultation Form (Initially Hidden) -->
@@ -209,14 +214,12 @@
                 <input type="text" id="name" name="name" required>
               </div>
               <div class="form-group">
-                <label for="countryInterest">Country of Interest</label>
-                <select id="countryInterest" name="countryInterest" required>
-                  <option value="">Select a country</option>
-                  <option value="Kenya">Kenya</option>
-                  <option value="Uganda">Uganda</option>
-                  <option value="Tanzania">Tanzania</option>
-                  <option value="Rwanda">Rwanda</option>
-                  <option value="Ethiopia">Ethiopia</option>
+                <label for="Interest">Interest</label>
+                <select id="Interest" name="Interest" required>
+                  <option value="">Select an interest</option>
+                  <option value="Kenya">Tourism</option>
+                  <option value="Uganda">Short Stay</option>
+                  <option value="Tanzania">Moving and Integration</option>
                 </select>
               </div>
               <div class="form-group">
@@ -225,7 +228,7 @@
               </div>
               <div class="form-group">
                 <label for="proofOfPayment">Proof of Payment</label>
-                <input type="file" id="proofOfPayment" name="proofOfPayment" accept=".pdf,.jpg,.jpeg,.png" required>
+                <input type="file" id="proofOfPayment" name="proofOfPayment" accept=".pdf,.jpg,.jpeg,.png" required maxlength="5242880">
                 <small>Upload your PayPal payment receipt (PDF, JPG, or PNG)</small>
               </div>
               <button type="submit" class="submit-btn">Submit Consultation Request</button>
@@ -371,111 +374,7 @@
   <button class="fab">Book Appointment</button>
 
   <!-- Booking Form Modal -->
-  <div class="booking-modal">
-    <div class="booking-form">
-      <button class="close-btn">&times;</button>
-      <h2>Book Property Viewing</h2>
-      <form id="bookingForm">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" required placeholder="+254 XXX XXX XXX">
-        </div>
-        <div class="form-group">
-          <label for="budget">Budget (KSH)</label>
-          <input type="number" id="budget" required min="0" step="1000000" placeholder="Enter amount in KSH">
-        </div>
-        <div class="form-group">
-          <label for="houseType">House Type</label>
-          <select id="houseType" required>
-            <option value="">Select house type</option>
-            <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
-            <option value="Villa">Villa</option>
-            <option value="Townhouse">Townhouse</option>
-            <option value="Maisonette">Maisonette</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="location">Preferred Location</label>
-          <input type="text" id="location" required placeholder="Enter preferred location">
-        </div>
-        <div class="form-group">
-          <label for="bedrooms">Number of Bedrooms</label>
-          <select id="bedrooms" required>
-            <option value="">Select number of bedrooms</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5+">5+</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="property">Property of Interest</label>
-          <select id="property" required>
-            <option value="">Select a property</option>
-            <option value="Kiambu Road Villas">Kiambu Road Villas</option>
-            <option value="Easternville">Easternville</option>
-            <option value="Luxury Apartments">Luxury Apartments</option>
-            <option value="Runda 92M">Runda 92M</option>
-            <option value="Runda House 62M">Runda House 62M</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Preferred Viewing Date</label>
-          <input type="date" id="date" required>
-          <span class="error-message" id="dateError"></span>
-        </div>
-        <button type="submit">Proceed to Payment</button>
-      </form>
-      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
-        <h3>Complete Payment</h3>
-        <!-- Pesapal iframe will be inserted here -->
-        <div id="paypal-container-U798KMLCDHKJY"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Floating Action Button -->
-  <button class="fab">Book Appointment</button>
-
-  <!-- Booking Form Modal -->
-  <div class="booking-modal">
-    <div class="booking-form">
-      <button class="close-btn">&times;</button>
-      <h2>Book Property Viewing</h2>
-      <form id="bookingForm">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" required placeholder="+254 XXX XXX XXX">
-        </div>
-        <div class="form-group">
-          <label for="property">Property of Interest</label>
-          <select id="property" required>
-            <option value="">Select a property</option>
-            <option value="Kiambu Road Villas">Kiambu Road Villas</option>
-            <option value="Easternville">Easternville</option>
-            <option value="Luxury Apartments">Luxury Apartments</option>
-            <option value="Runda 92M">Runda 92M</option>
-            <option value="Runda House 62M">Runda House 62M</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Preferred Viewing Date</label>
-          <input type="date" id="date" required>
-        </div>
-        <button type="submit">Submit Request</button>
-      </form>
-    </div>
-  </div>
+  
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -508,7 +407,6 @@
       setInterval(nextSlide, 5000);
     });
   </script>
-  <!-- <script src="https://www.paypal.com/sdk/js?client-id=AZSKMhp99ewcOQRtKElEQHlErmQxsjOrdPJxdj_Cr_-2CimMh9srkJEklKwL2MrvfuxcbTVMN-lhy02D&currency=USD"></script> -->
   <script src="assets/js/project.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/consultation.js"></script>
