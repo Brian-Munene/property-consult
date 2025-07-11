@@ -189,51 +189,10 @@
       <!-- Consultation Modal -->
       <div class="consultation-modal">
         <div class="consultation-form-container">
-          <!-- Step Navbar -->
-          <nav class="consultation-steps-navbar">
-            <ul class="steps-list">
-              <li class="step-item step-payment active" id="step-nav-1">1. Pay Consultation Fee</li>
-              <li class="step-item step-form" id="step-nav-2">2. Complete Your Information</li>
-            </ul>
-          </nav>
           <button class="close-consultation-btn">&times;</button>
           <h2>Book Consultation</h2>
-          
-          <!-- Step 1: PayPal Payment -->
-          <div class="booking-step" id="step1">
-            <h4>Step 1: Pay Consultation Fee</h4>
-            <div id="paypal-container-KNTZTASJHPXU2"></div>
-          </div>
-
-          <!-- Step 2: Consultation Form (Initially Hidden) -->
-          <div class="booking-step hidden" id="step2">
-            <h4>Step 2: Complete Your Information</h4>
-            <form id="consultationForm" class="consultation-form">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-              </div>
-              <div class="form-group">
-                <label for="Interest">Interest</label>
-                <select id="Interest" name="Interest" required>
-                  <option value="">Select an interest</option>
-                  <option value="Kenya">Tourism</option>
-                  <option value="Uganda">Short Stay</option>
-                  <option value="Tanzania">Moving and Integration</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="countryOrigin">Country of Origin</label>
-                <input type="text" id="countryOrigin" name="countryOrigin" required>
-              </div>
-              <div class="form-group">
-                <label for="proofOfPayment">Proof of Payment</label>
-                <input type="file" id="proofOfPayment" name="proofOfPayment" accept=".pdf,.jpg,.jpeg,.png" required maxlength="5242880">
-                <small>Upload your PayPal payment receipt (PDF, JPG, or PNG)</small>
-              </div>
-              <button type="submit" class="submit-btn">Submit Consultation Request</button>
-            </form>
-          </div>
+          <div id="paypal-container-KNTZTASJHPXU2"></div>
+          <!-- Consultation fields moved to consultation.html -->
         </div>
       </div>
 

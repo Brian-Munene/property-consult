@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultation Form</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/listings.css">
+  <link rel="stylesheet" href="assets/css/consultation.css">
+</head>
+<body>
+  <!-- HEADER / NAV -->
+  <header class="site-header">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html">
+          <img src="assets/images/logo.jpeg" alt="Property Consult Limited Logo" class="logo-img">
+        </a>
+      </div>
+      <button class="menu-toggle" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html#listings">Listings</a></li>
+          <li><a href="index.html#cities">African Diaspora</a></li>
+          <li><a href="index.html#billionaire-investments">Billionaire Investments</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <a href="index.html" class="back-btn">&larr; Back</a>
+
+  <div class="consultation-form-container consultation-form-standalone" style="max-width: 500px; margin: 40px auto; margin-top: 150px;">
+    <h2>Book Consultation</h2>
+    <form id="consultationForm" class="consultation-form">
+      <div class="form-group label-input-row">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group label-input-row">
+        <label for="Interest">Interest:</label>
+        <select id="Interest" name="Interest" required>
+          <option value="">Select an interest</option>
+          <option value="Kenya">Tourism</option>
+          <option value="Uganda">Short Stay</option>
+          <option value="Tanzania">Moving and Integration</option>
+        </select>
+      </div>
+      <div class="form-group label-input-row">
+        <label for="countryOrigin">Country of Origin:</label>
+        <input type="text" id="countryOrigin" name="countryOrigin" required>
+      </div>
+      <button type="submit" class="submit-btn">Submit Consultation Request</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('consultationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const interest = document.getElementById('Interest').value;
+      const countryOrigin = document.getElementById('countryOrigin').value;
+      const message = encodeURIComponent(
+        'Hello, I would like to book a consultation.\n\n' +
+        'Contact Details:\n' +
+        '- Name: ' + name + '\n' +
+        '- Country of Interest: ' + interest + '\n' +
+        '- Country of Origin: ' + countryOrigin
+      );
+      window.open('https://wa.me/254726600953?text=' + message, '_blank');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
