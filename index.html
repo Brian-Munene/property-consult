@@ -12,6 +12,7 @@
   <meta name="author" content="brianmunene69@gmail.com">
   <meta name="robots" content="index, follow">
   
+  
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://propertyconsult.com/">
@@ -28,6 +29,10 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/navbar.css" />
   <link rel="stylesheet" href="assets/css/listings.css" />
+  <link rel="stylesheet" href="assets/css/consultation.css" />
+  <script 
+    src="https://www.paypal.com/sdk/js?client-id=BAA0NWC9bY70fc3NFLEPw75CDd45p-zNRoIVLIbxg4HNm7twBZYbRUxyRR8RSS7vEL9LSlcWu0M57I-raM&components=hosted-buttons&disable-funding=venmo&currency=USD">
+  </script>
 </head>
 <body>
   <!-- HEADER / NAV -->
@@ -175,6 +180,22 @@
       <h3 class="diaspora-heading">African Diaspora consultations</h3>
       
       <p class="spaced-bold commitment-fee-highlight diaspora-heading">Commitment fee for consultations USD 1000<br>dollars payable up front.</p>
+      
+      <!-- Consultation Booking Section -->
+      <div class="consultation-booking">
+        <button class="consultation-btn">Book Consultation</button>
+      </div>
+
+      <!-- Consultation Modal -->
+      <div class="consultation-modal">
+        <div class="consultation-form-container">
+          <button class="close-consultation-btn">&times;</button>
+          <h2>Book Consultation</h2>
+          <div id="paypal-container-KNTZTASJHPXU2"></div>
+          <!-- Consultation fields moved to consultation.html -->
+        </div>
+      </div>
+
       <h3 class="spaced-bold-small diaspora-heading">Services Offered</h3>
       <ul class="diaspora-list">
         <li>East African tour and/or settling advisory</li>
@@ -312,73 +333,7 @@
   <button class="fab">Book Appointment</button>
 
   <!-- Booking Form Modal -->
-  <div class="booking-modal">
-    <div class="booking-form">
-      <button class="close-btn">&times;</button>
-      <h2>Book Property Viewing</h2>
-      <form id="bookingForm">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" required placeholder="+254 XXX XXX XXX">
-        </div>
-        <div class="form-group">
-          <label for="budget">Budget (KSH)</label>
-          <input type="number" id="budget" required min="0" step="1000000" placeholder="Enter amount in KSH">
-        </div>
-        <div class="form-group">
-          <label for="houseType">House Type</label>
-          <select id="houseType" required>
-            <option value="">Select house type</option>
-            <option value="Apartment">Apartment</option>
-            <option value="House">House</option>
-            <option value="Villa">Villa</option>
-            <option value="Townhouse">Townhouse</option>
-            <option value="Maisonette">Maisonette</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="location">Preferred Location</label>
-          <input type="text" id="location" required placeholder="Enter preferred location">
-        </div>
-        <div class="form-group">
-          <label for="bedrooms">Number of Bedrooms</label>
-          <select id="bedrooms" required>
-            <option value="">Select number of bedrooms</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5+">5+</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="property">Property of Interest</label>
-          <select id="property" required>
-            <option value="">Select a property</option>
-            <option value="Kiambu Road Villas">Kiambu Road Villas</option>
-            <option value="Easternville">Easternville</option>
-            <option value="Luxury Apartments">Luxury Apartments</option>
-            <option value="Runda 92M">Runda 92M</option>
-            <option value="Runda House 62M">Runda House 62M</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Preferred Viewing Date</label>
-          <input type="date" id="date" required>
-          <span class="error-message" id="dateError"></span>
-        </div>
-        <button type="submit">Proceed to Payment</button>
-      </form>
-      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
-        <h3>Complete Payment</h3>
-        <!-- Pesapal iframe will be inserted here -->
-      </div>
-    </div>
-  </div>
+  
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -413,9 +368,7 @@
   </script>
   <script src="assets/js/project.js"></script>
   <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/consultation.js"></script>
   <script src="assets/js/booking.js"></script>
-  <!-- Required scripts for Pesapal integration -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-  <script src="assets/js/pesapal.js"></script>
 </body>
 </html>

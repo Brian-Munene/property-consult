@@ -28,6 +28,8 @@
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="assets/css/navbar.css" />
   <link rel="stylesheet" href="assets/css/listings.css" />
+  <!-- other scripts -->
+  
   <style>
     .city-header {
       position: relative;
@@ -252,32 +254,28 @@
     }
 
     .site-footer {
-      background-color: #333;
-      color: white;
-      padding: 2rem 0;
       position: relative;
     }
 
     .footer-flex {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
+      flex-direction: row;
+      text-align: center;
+      padding: 1rem;
+      background-color: #f8f9fa;
+      border-top: 1px solid #ddd;
     }
 
     .footer-facebook-link {
-      display: inline-block;
-      margin-right: 1rem;
-    }
-
-    .footer-facebook-link svg {
-      vertical-align: middle;
+      margin-bottom: 0.5rem;
     }
 
     .footer-copyright {
       margin: 0;
       font-size: 0.9rem;
-      color: #ccc;
+      color: #666;
     }
 
     /* Zoom Modal */
@@ -360,46 +358,6 @@
     </div>
   </section>
 
-  <!-- Floating Action Button -->
-  <button class="fab">Book Appointment</button>
-
-  <!-- Booking Form Modal -->
-  <div class="booking-modal">
-    <div class="booking-form">
-      <button class="close-btn">&times;</button>
-      <h2>Book Property Viewing</h2>
-      <form id="bookingForm">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" required>
-        </div>
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" required placeholder="+254 XXX XXX XXX">
-        </div>
-        <div class="form-group">
-          <label for="property">Interest</label>
-          <select id="property" required>
-            <option value="Kampala Visit">Kampala Visit</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Preferred Viewing Date</label>
-          <input type="date" id="date" required>
-        </div>
-        <div class="form-group">
-          <label for="budget">Payment Amount (UGX)</label>
-          <input type="number" id="budget" required min="0" step="1000" placeholder="Enter viewing fee in UGX">
-        </div>
-        <button type="submit">Proceed to Payment</button>
-      </form>
-      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
-        <h3>Complete Payment</h3>
-        <!-- Pesapal iframe will be inserted here -->
-      </div>
-    </div>
-  </div>
-
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-flex">
@@ -418,9 +376,6 @@
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/project.js"></script>
-  <!-- Required scripts for Pesapal integration -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-  <script src="assets/js/pesapal.js"></script>
   <script src="assets/js/booking.js"></script>
 </body>
 </html>
