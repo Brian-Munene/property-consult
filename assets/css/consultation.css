@@ -8,18 +8,18 @@
 }
 
 .consultation-btn {
-    background: #34abeb;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: #28a745 !important; /* Bootstrap green */
+  color: #fff !important;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
 }
-
-.consultation-btn:hover {
-    background: #2a8bc7;
+.consultation-btn:hover, .consultation-btn:focus {
+  background-color: #218838;
 }
 
 .consultation-modal {
