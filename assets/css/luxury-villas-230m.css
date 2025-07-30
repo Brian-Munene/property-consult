@@ -1,4 +1,4 @@
-/* Magnificent Villas Page Styles */
+/* Luxury Villas 230m Page Styles */
 .site-header {
   position: relative;
   background: white;
@@ -6,7 +6,7 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   width: 100%;
 }
-.magnificent-villas-container {
+.luxury-villas-230m-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,7 +40,7 @@
   position: relative;
   height: 50vh;
   width: 100%;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/Magnificent-Villas/house-front.jpeg');
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/Luxury-Villas-230m/house-front.jpeg');
   background-size: cover;
   background-position: center;
   display: flex;
