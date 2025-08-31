@@ -35,6 +35,8 @@
 
 .consultation-modal.active {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .consultation-form-container {
@@ -189,6 +191,110 @@
 
 #paypal-button-container {
     margin-top: 20px;
+}
+
+.payment-info {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.label-input-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-input-row label {
+    font-weight: 600;
+    color: #333;
+}
+
+.label-input-row input,
+.label-input-row select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.manual-payment-instructions {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.manual-payment-instructions h4 {
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.manual-payment-instructions p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.payment-methods {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.payment-methods ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.payment-methods li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.payment-methods li:last-child {
+    border-bottom: none;
+}
+
+.manual-payment-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.manual-payment-btn:hover {
+    background-color: #218838;
+}
+
+.loading-payment {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+    font-size: 16px;
+}
+
+.loading-payment::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Payment success animation */

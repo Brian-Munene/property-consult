@@ -699,33 +699,43 @@
       <h2>Book Property Viewing</h2>
       <form id="bookingForm">
         <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" required>
+          <label for="name">Name</label>
+          <input type="text" id="name" required placeholder="Enter your full name">
         </div>
         <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" required placeholder="+254 XXX XXX XXX">
-        </div>
-        <div class="form-group">
-          <label for="property">Property of Interest</label>
-          <select id="property" required>
-            <option value="Luxury Apartments">Luxury Apartments</option>
+          <label for="propertyType">Type of property</label>
+          <select id="propertyType" required>
+            <option value="">Select type</option>
+            <option value="Flat roof townhouse">Flat roof townhouse</option>
+            <option value="Maisonette">Maisonette</option>
+            <option value="Bungalow">Bungalow</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Villa">Villa</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="date">Preferred Viewing Date</label>
+          <label for="bedrooms">No. of bedrooms</label>
+          <input type="number" id="bedrooms" required min="0" step="1" placeholder="e.g. 3">
+        </div>
+        <div class="form-group">
+          <label for="locations">Preferred locations</label>
+          <input type="text" id="locations" required placeholder="e.g. Kiambu Road, Runda, Thindigua">
+        </div>
+        <div class="form-group">
+          <label for="budgetLimit">Budget limit (KSH)</label>
+          <input type="number" id="budgetLimit" required min="0" step="100000" placeholder="e.g. 20,000,000">
+        </div>
+        <div class="form-group">
+          <label for="date">Preferred date</label>
           <input type="date" id="date" required>
         </div>
         <div class="form-group">
-          <label for="budget">Payment Amount (KSH)</label>
+          <label for="budget">Viewing fee (KSH)</label>
           <input type="number" id="budget" required min="0" step="1000" placeholder="Enter viewing fee">
         </div>
-        <button type="submit">Proceed to Payment</button>
+        <button type="submit">BOOK APPOINTMENT</button>
       </form>
-      <div id="pesapal-button-container" style="display: none; margin-top: 20px;">
-        <h3>Complete Payment</h3>
-        <!-- Pesapal iframe will be inserted here -->
-      </div>
+
     </div>
   </div>
 

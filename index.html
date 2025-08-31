@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="assets/css/listings.css" />
   <link rel="stylesheet" href="assets/css/consultation.css" />
   <script 
-    src="https://www.paypal.com/sdk/js?client-id=BAA0NWC9bY70fc3NFLEPw75CDd45p-zNRoIVLIbxg4HNm7twBZYbRUxyRR8RSS7vEL9LSlcWu0M57I-raM&components=hosted-buttons&disable-funding=venmo&currency=USD">
+    src="https://www.paypal.com/sdk/js?client-id=BAA0NWC9bY70fc3NFLEPw75CDd45p-zNRoIVLIbxg4HNm7twBZYbRUxyRR8RSS7vEL9LSlcWu0M57I-raM&components=buttons&disable-funding=venmo&currency=USD">
   </script>
 </head>
 <body>
@@ -209,8 +209,38 @@
         <div class="consultation-form-container">
           <button class="close-consultation-btn">&times;</button>
           <h2>Book Consultation</h2>
-          <div id="paypal-container-KNTZTASJHPXU2"></div>
-          <!-- Consultation fields moved to consultation.html -->
+          
+          <!-- Step 1: Payment -->
+          <div id="step1" class="booking-step">
+            <p class="payment-info">Please complete the payment of USD 1000 to proceed with your consultation booking.</p>
+            <div id="paypal-button-container"></div>
+          </div>
+          
+          <!-- Step 2: Consultation Form -->
+          <div id="step2" class="booking-step hidden">
+            <form id="consultationForm" class="consultation-form">
+              <div class="form-group label-input-row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group label-input-row">
+                <label for="countryInterest">Country of Interest:</label>
+                <select id="countryInterest" name="countryInterest" required>
+                  <option value="">Select a country</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Uganda">Uganda</option>
+                  <option value="Tanzania">Tanzania</option>
+                  <option value="Rwanda">Rwanda</option>
+                  <option value="Ethiopia">Ethiopia</option>
+                </select>
+              </div>
+              <div class="form-group label-input-row">
+                <label for="countryOrigin">Country of Origin:</label>
+                <input type="text" id="countryOrigin" name="countryOrigin" required>
+              </div>
+              <button type="submit" class="submit-btn">Submit Consultation Request</button>
+            </form>
+          </div>
         </div>
       </div>
 
