@@ -8,7 +8,7 @@
 }
 
 .consultation-btn {
-    background: #34abeb;
+    background: #25d366;
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -19,7 +19,7 @@
 }
 
 .consultation-btn:hover {
-    background: #2a8bc7;
+    background: #1da851;
 }
 
 .consultation-modal {

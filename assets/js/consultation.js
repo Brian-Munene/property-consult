@@ -241,11 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showStep(1);
     }
 
-    // Attach to both .fab and .consultation-btn
-    const fabBtn = document.querySelector('.fab');
-    if (fabBtn) {
-        fabBtn.addEventListener('click', showConsultationModal);
-    }
+    // Attach only to consultation-btn (FAB is handled by booking.js)
     if (consultationBtn) {
         consultationBtn.addEventListener('click', showConsultationModal);
     }
