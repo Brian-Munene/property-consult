@@ -220,53 +220,84 @@
     font-size: 16px;
 }
 
+/* Manual payment instructions */
 .manual-payment-instructions {
-    text-align: center;
-    padding: 20px;
-    background-color: #f8f9fa;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
     border-radius: 8px;
-    border: 1px solid #e9ecef;
+    padding: 2rem;
+    text-align: center;
 }
 
 .manual-payment-instructions h4 {
-    color: #007bff;
-    margin-bottom: 15px;
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
 }
 
-.manual-payment-instructions p {
-    margin-bottom: 15px;
-    color: #666;
-}
-
-.payment-methods {
+.manual-payment-instructions .payment-methods {
     text-align: left;
-    margin: 20px 0;
+    margin: 1.5rem 0;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
 }
 
-.payment-methods ul {
-    list-style: none;
+.manual-payment-instructions .payment-methods ul {
+    margin: 0.5rem 0 0 1.5rem;
     padding: 0;
-    margin: 10px 0;
 }
 
-.payment-methods li {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
+.manual-payment-instructions .payment-methods li {
+    margin-bottom: 0.5rem;
+    color: #555;
 }
 
-.payment-methods li:last-child {
-    border-bottom: none;
+.manual-payment-instructions .payment-methods .paypal-link {
+    color: #0070ba;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.manual-payment-instructions .payment-methods .paypal-link:hover {
+    text-decoration: underline;
+}
+
+.payment-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.paypal-pay-btn {
+    background: #0070ba;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.paypal-pay-btn:hover {
+    background: #005ea6;
+    color: white;
+    text-decoration: none;
 }
 
 .manual-payment-btn {
-    background-color: #28a745;
+    background: #28a745;
     color: white;
     border: none;
     padding: 12px 24px;
-    border-radius: 4px;
     font-size: 16px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s;
 }
 
 .manual-payment-btn:hover {
