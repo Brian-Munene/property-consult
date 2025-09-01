@@ -48,6 +48,16 @@
   text-align: center;
 }
 
+.property-price {
+  padding: 0.5rem 1rem;
+  margin: 0;
+  background-color: #28a745;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
 .project-gallery {
   display: none;
 }
