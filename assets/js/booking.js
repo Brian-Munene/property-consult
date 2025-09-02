@@ -82,24 +82,40 @@ document.addEventListener('DOMContentLoaded', function() {
         bookingForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate date before submission
-            const selectedDate = new Date(document.getElementById('date').value);
-            if (selectedDate < today) {
-                alert('Please select a future date');
-                return;
+            // Normalize budgetLimit: validate pattern and set raw numeric hidden field
+            const formatted = budgetLimitInput ? budgetLimitInput.value : '';
+            if (budgetLimitInput) {
+                const pattern = new RegExp('^\\d{1,3}(,\\d{3})*$');
+                if (formatted && !pattern.test(formatted)) {
+                    alert('Please enter a valid budget using digits and optional thousands commas, e.g. 20,000,000');
+                    budgetLimitInput.focus();
+                    return;
+                }
+                const raw = formatted.replace(/\D/g, '');
+                const hidden = document.getElementById('budgetLimit_raw');
+                if (hidden) hidden.value = raw;
             }
 
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                propertyType: document.getElementById('propertyType').value,
-                bedrooms: document.getElementById('bedrooms').value,
-                locations: document.getElementById('locations').value,
-                // budgetLimit is stored formatted (with commas) in the input
-                budgetLimit: document.getElementById('budgetLimit').value,
-                date: document.getElementById('date').value,
-                viewingFee: document.getElementById('budget').value
-            };
+             // Validate date before submission
+             const selectedDate = new Date(document.getElementById('date').value);
+             if (selectedDate < today) {
+                 alert('Please select a future date');
+                 return;
+             }
+
+             // Get form data
+             const formData = {
+                 name: document.getElementById('name').value,
+                 propertyType: document.getElementById('propertyType').value,
+                 bedrooms: document.getElementById('bedrooms').value,
+                 locations: document.getElementById('locations').value,
+                 // budgetLimit is stored formatted (with commas) in the input
+                 budgetLimit: document.getElementById('budgetLimit').value,
+                 // raw numeric value available under budgetLimit_raw for consumers expecting numeric
+                 budgetLimit_raw: document.getElementById('budgetLimit_raw') ? document.getElementById('budgetLimit_raw').value : '',
+                 date: document.getElementById('date').value,
+                 viewingFee: document.getElementById('budget').value
+             };
 
             // Create WhatsApp message
             const message = encodeURIComponent(

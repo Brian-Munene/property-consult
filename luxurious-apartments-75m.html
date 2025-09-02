@@ -707,7 +707,12 @@
         </div>
         <div class="form-group">
           <label for="budgetLimit">Budget limit (KSH)</label>
-          <input type="text" id="budgetLimit" name="budget_limit" inputmode="numeric" autocomplete="off" required placeholder="e.g. 66,000,000">
+          <input type="text" id="budgetLimit" name="budget_limit" inputmode="numeric" autocomplete="off" required
+                 placeholder="e.g. 66,000,000"
+                 pattern="^\d{1,3}(,\d{3})*$"
+                 title="Enter digits with optional thousands commas, e.g., 20,000,000"
+                 data-min="0" data-step="100000">
+          <input type="hidden" id="budgetLimit_raw" name="budgetLimit" value="">
         </div>
         <div class="form-group">
           <label for="date">Preferred date</label>
