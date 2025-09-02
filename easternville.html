@@ -740,12 +740,12 @@
       <form id="bookingForm">
         <div class="form-group full">
           <label for="name">Name</label>
-          <input type="text" id="name" required placeholder="Enter your full name">
+          <input type="text" id="name" name="name" autocomplete="name" required placeholder="Enter your full name">
         </div>
 
         <div class="form-group">
           <label for="propertyType">Type of property</label>
-          <select id="propertyType" required>
+          <select id="propertyType" name="property_type" autocomplete="off" required>
             <option value="">Select type</option>
             <option value="Flat roof townhouse">Flat roof townhouse</option>
             <option value="Maisonette">Maisonette</option>
@@ -757,27 +757,27 @@
 
         <div class="form-group">
           <label for="bedrooms">No. of bedrooms</label>
-          <input type="number" id="bedrooms" required min="0" step="1" placeholder="e.g. 3">
+          <input type="number" id="bedrooms" name="bedrooms" inputmode="numeric" autocomplete="off" required min="0" step="1" placeholder="e.g. 3">
         </div>
 
         <div class="form-group">
           <label for="locations">Preferred locations</label>
-          <input type="text" id="locations" required placeholder="e.g. Kiambu Road, Runda, Thindigua">
+          <input type="text" id="locations" name="preferred_locations" autocomplete="street-address" required placeholder="e.g. Kiambu Road, Runda, Thindigua">
         </div>
 
         <div class="form-group">
           <label for="budgetLimit">Budget limit (KSH)</label>
-          <input type="number" id="budgetLimit" required min="0" step="100000" placeholder="e.g. 20,000,000">
+          <input type="number" id="budgetLimit" name="budget_limit" inputmode="numeric" autocomplete="off" required min="0" step="100000" placeholder="e.g. 20,000,000">
         </div>
 
         <div class="form-group">
           <label for="date">Preferred date</label>
-          <input type="date" id="date" required>
+          <input type="date" id="date" name="preferred_date" autocomplete="off" required>
         </div>
 
         <div class="form-group">
           <label for="budget">Viewing fee (KSH)</label>
-          <input type="number" id="budget" required min="0" step="1000" placeholder="Enter viewing fee">
+          <input type="number" id="budget" name="viewing_fee" inputmode="numeric" autocomplete="off" required min="0" step="1000" placeholder="Enter viewing fee">
         </div>
 
         <div class="form-group full">
