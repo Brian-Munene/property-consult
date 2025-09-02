@@ -77,6 +77,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Format viewing fee input with comma separators
+    const viewingFeeInput = document.getElementById('budget');
+    function formatNumberWithCommas(value) {
+        const digits = value.replace(/\D/g, '');
+        if (!digits) return '';
+        return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    if (viewingFeeInput) {
+        viewingFeeInput.addEventListener('input', (e) => {
+            const start = e.target.selectionStart;
+            const oldLength = e.target.value.length;
+            e.target.value = formatNumberWithCommas(e.target.value);
+            const newLength = e.target.value.length;
+            const pos = Math.max(0, start + (newLength - oldLength));
+            e.target.setSelectionRange(pos, pos);
+        });
+
+        viewingFeeInput.addEventListener('blur', (e) => {
+            e.target.value = formatNumberWithCommas(e.target.value);
+        });
+    }
+
     // Handle form submission - send WhatsApp message
     if (bookingForm) {
         bookingForm.addEventListener('submit', function(e) {
@@ -96,6 +119,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (hidden) hidden.value = raw;
             }
 
+            // Normalize viewing fee: validate pattern and set raw numeric hidden field
+            const formattedBudget = viewingFeeInput ? viewingFeeInput.value : '';
+            if (viewingFeeInput) {
+                const pattern2 = new RegExp('^\\d{1,3}(,\\d{3})*$');
+                if (formattedBudget && !pattern2.test(formattedBudget)) {
+                    alert('Please enter a valid viewing fee using digits and optional thousands commas, e.g. 1,000');
+                    viewingFeeInput.focus();
+                    return;
+                }
+                const rawBudget = formattedBudget.replace(/\D/g, '');
+                const hiddenBudget = document.getElementById('budget_raw');
+                if (hiddenBudget) hiddenBudget.value = rawBudget;
+            }
+
              // Validate date before submission
              const selectedDate = new Date(document.getElementById('date').value);
              if (selectedDate < today) {
@@ -113,8 +150,12 @@ document.addEventListener('DOMContentLoaded', function() {
                  budgetLimit: document.getElementById('budgetLimit').value,
                  // raw numeric value available under budgetLimit_raw for consumers expecting numeric
                  budgetLimit_raw: document.getElementById('budgetLimit_raw') ? document.getElementById('budgetLimit_raw').value : '',
+                 // viewing fee formatted and raw
+                 viewingFee: document.getElementById('budget') ? document.getElementById('budget').value : '',
+                 viewingFee_raw: document.getElementById('budget_raw') ? document.getElementById('budget_raw').value : '',
                  date: document.getElementById('date').value,
-                 viewingFee: document.getElementById('budget').value
+                // backup: keep original reading for compatibility
+                // viewingFee is above
              };
 
             // Create WhatsApp message
