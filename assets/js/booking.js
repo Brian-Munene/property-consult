@@ -52,6 +52,31 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Format budget limit input with comma separators
+    const budgetLimitInput = document.getElementById('budgetLimit');
+    if (budgetLimitInput) {
+        function formatWithCommas(value) {
+            const digits = value.replace(/\D/g, '');
+            if (!digits) return '';
+            return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        budgetLimitInput.addEventListener('input', (e) => {
+            const start = e.target.selectionStart;
+            const oldLength = e.target.value.length;
+            e.target.value = formatWithCommas(e.target.value);
+            // move caret to end to avoid complex cursor math (acceptable for this form)
+            const newLength = e.target.value.length;
+            const pos = Math.max(0, start + (newLength - oldLength));
+            e.target.setSelectionRange(pos, pos);
+        });
+
+        // Optional: ensure formatting on blur as well
+        budgetLimitInput.addEventListener('blur', (e) => {
+            e.target.value = formatWithCommas(e.target.value);
+        });
+    }
+
     // Handle form submission - send WhatsApp message
     if (bookingForm) {
         bookingForm.addEventListener('submit', function(e) {
@@ -70,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 propertyType: document.getElementById('propertyType').value,
                 bedrooms: document.getElementById('bedrooms').value,
                 locations: document.getElementById('locations').value,
+                // budgetLimit is stored formatted (with commas) in the input
                 budgetLimit: document.getElementById('budgetLimit').value,
                 date: document.getElementById('date').value,
                 viewingFee: document.getElementById('budget').value
