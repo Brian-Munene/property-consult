@@ -39,6 +39,89 @@
     src="https://www.paypal.com/sdk/js?client-id=AeTtjPsk3CFQwtVU4HbehmUJrwr-vLHA3PxEiNSjydHvFLgyRfb3e1UvsKXG5re8mSmRvbM8DyiVT8uo&components=buttons&disable-funding=venmo&currency=USD&intent=capture"
     defer>
   </script>
+  <style>
+    /* Booking Form Modal */
+    .booking-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1001;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .booking-modal.active {
+      display: flex;
+    }
+
+    .booking-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .booking-form form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem 1rem;
+      align-items: start;
+    }
+
+    .form-group {
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.55rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 0.95rem;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group button[type="submit"] {
+      background-color: #25d366;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .booking-form form {
+        grid-template-columns: 1fr;
+      }
+      .booking-form {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- HEADER / NAV -->
@@ -413,7 +496,7 @@
       <button class="close-btn">&times;</button>
       <h2>Book Property Viewing</h2>
       <form id="bookingForm">
-        <div class="form-group">
+        <div class="form-group full">
           <label for="name">Name</label>
           <input type="text" id="name" required placeholder="Enter your full name">
         </div>
@@ -448,8 +531,11 @@
           <label for="budget">Viewing fee (KSH)</label>
           <input type="number" id="budget" required min="0" step="1000" placeholder="Enter viewing fee">
         </div>
-        <button type="submit">BOOK APPOINTMENT</button>
+        <div class="form-group full">
+          <button type="submit">BOOK APPOINTMENT</button>
+        </div>
       </form>
+
     </div>
   </div>
 
