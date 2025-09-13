@@ -321,7 +321,9 @@
     .form-group {
       margin-bottom: 0;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
     }
 
     .form-group label {
@@ -344,6 +346,8 @@
 
     .form-group.full {
       grid-column: 1 / -1;
+      flex-direction: column;
+      width: 100%;
     }
 
     .form-group button[type="submit"] {
@@ -363,6 +367,40 @@
       }
       .booking-form {
         padding: 1rem;
+      }
+      .booking-form .form-group {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .booking-form .form-group label {
+        width: 40%;
+        margin-bottom: 0;
+      }
+
+      .booking-form .form-group input,
+      .booking-form .form-group select {
+        width: 60%;
+      }
+
+      .booking-form .form-group.full {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .booking-form .form-group.name-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .booking-form .form-group.name-row label {
+        width: 100%;
+        margin-bottom: 0.35rem;
+      }
+
+      .booking-form .form-group.name-row input {
+        width: 100%;
       }
     }
   </style>
@@ -603,7 +641,7 @@
       <button class="close-btn">&times;</button>
       <h2>Book Property Viewing</h2>
       <form id="bookingForm">
-        <div class="form-group full">
+        <div class="form-group full name-row">
           <label for="name">Name</label>
           <input type="text" id="name" required placeholder="Enter your full name">
         </div>

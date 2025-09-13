@@ -339,7 +339,9 @@
     .form-group {
       margin-bottom: 0;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.75rem;
     }
 
     .form-group label {
@@ -363,6 +365,8 @@
     /* Use this class when an item should span full width (both columns) */
     .form-group.full {
       grid-column: 1 / -1;
+      flex-direction: column;
+      width: 100%;
     }
 
     .form-group button[type="submit"] {
@@ -376,12 +380,72 @@
       font-size: 1rem;
     }
 
+    /* Desktop / Tablet: make label + input share row space for non-full groups */
+    .booking-form .form-group:not(.full) label {
+      width: 35%;
+      margin-bottom: 0;
+    }
+
+    .booking-form .form-group:not(.full) input,
+    .booking-form .form-group:not(.full) select {
+      width: 65%;
+    }
+
+    /* Make the booking name row horizontal on desktop/tablet even though it has .full */
+    .booking-form .form-group.full.name-row {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .booking-form .form-group.full.name-row label {
+      width: 35%;
+      margin-bottom: 0;
+    }
+
+    .booking-form .form-group.full.name-row input {
+      width: 65%;
+    }
+
     @media (max-width: 600px) {
       .booking-form form {
         grid-template-columns: 1fr;
       }
       .booking-form {
         padding: 1rem;
+      }
+      .booking-form .form-group {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .booking-form .form-group label {
+        width: 40%;
+        margin-bottom: 0;
+      }
+
+      .booking-form .form-group input,
+      .booking-form .form-group select {
+        width: 60%;
+      }
+
+      .booking-form .form-group.full {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .booking-form .form-group.name-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .booking-form .form-group.name-row label {
+        width: 100%;
+        margin-bottom: 0.35rem;
+      }
+
+      .booking-form .form-group.name-row input {
+        width: 100%;
       }
     }
 
@@ -738,7 +802,7 @@
       <button class="close-btn">&times;</button>
       <h2>Book Property Viewing</h2>
       <form id="bookingForm">
-        <div class="form-group full">
+        <div class="form-group full name-row">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" autocomplete="name" required placeholder="Enter your full name">
         </div>

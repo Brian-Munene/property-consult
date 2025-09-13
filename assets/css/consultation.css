@@ -203,8 +203,9 @@
 
 .label-input-row {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
 }
 
 .label-input-row label {
@@ -218,6 +219,28 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+}
+
+/* Make full rows default to stacked, but allow a special name-row to be horizontal */
+.form-group.full {
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Make the name row horizontal when present */
+.form-group.full.name-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-group.full.name-row label {
+    width: 35%;
+    margin-bottom: 0;
+}
+
+.form-group.full.name-row input,
+.form-group.full.name-row select {
+    width: 65%;
 }
 
 /* Manual payment instructions */
@@ -381,5 +404,45 @@
 @keyframes fill {
     100% {
         box-shadow: inset 0px 0px 0px 30px #fff;
+    }
+}
+
+@media (max-width: 600px) {
+    .label-input-row {
+        gap: 0.5rem;
+        flex-direction: row;
+    }
+
+    .label-input-row label {
+        width: 40%;
+        margin-bottom: 0;
+        font-size: 0.95rem;
+    }
+
+    .label-input-row input,
+    .label-input-row select {
+        width: 60%;
+    }
+
+    /* Ensure elements meant to be full width stay stacked */
+    .consultation-form .form-group.full,
+    .booking-step .form-group.full {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* Exception: keep name row on one horizontal line on small devices unless explicitly stacked */
+    .consultation-form .form-group.name-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .consultation-form .form-group.name-row label {
+        width: 100%;
+        margin-bottom: 0.35rem;
+    }
+
+    .consultation-form .form-group.name-row input {
+        width: 100%;
     }
 }
