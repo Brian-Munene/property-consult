@@ -1009,3 +1009,35 @@ body { font-family: 'Segoe UI', Arial, sans-serif; line-height:1.6; color:#333; 
   background: #145db2;
   transform: translateY(-2px) scale(1.05);
 }
+
+/* Floating Facebook Action Button */
+#fab-facebook {
+  position: fixed;
+  /* align with the main FAB on the right */
+  right: 2rem;
+  /* place above the primary Book Appointment FAB which sits at 2rem */
+  bottom: 5.25rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.16);
+  z-index: 1300;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#fab-facebook svg { display: block; width: 42px; height: 42px; }
+
+#fab-facebook:focus {
+  outline: 3px solid rgba(24,119,242,0.18);
+  outline-offset: 4px;
+}
+
+@media (max-width: 480px) {
+  /* smaller screens: keep the facebook button above the book button with tighter spacing */
+  #fab-facebook { right: 0.75rem; bottom: 5.25rem; }
+}
